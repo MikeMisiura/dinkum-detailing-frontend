@@ -1,8 +1,8 @@
-function Messages() {
+function ContactUs() {
 
     return (
-        <h1>Messages</h1>
+        <h1>ContactUs</h1>
     )
 }
 
-export default Messages;
+export default ContactUs;

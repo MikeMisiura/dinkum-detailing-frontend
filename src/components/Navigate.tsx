@@ -8,19 +8,19 @@ function Navigate() {
 
     return (
         <>
-    <Navbar bg="light">
-        <Container>
-            <Navbar.Brand className="ms-4" href="/posts">Test</Navbar.Brand>
-        </Container>
-        <Container style={{ justifyContent: "right" }}>
-          <Nav className="me-4">
+            <Navbar bg="light">
+                <Container>
+                    <Navbar.Brand className="ms-4" href="/posts">Test</Navbar.Brand>
+                </Container>
+                <Container style={{ justifyContent: "right" }}>
+                    <Nav className="me-4">
 
-            <Nav.Link href="/posts">Services</Nav.Link>
-            <Nav.Link>Log in</Nav.Link>
+                        <Nav.Link href="/posts">Services</Nav.Link>
+                        <Nav.Link>Log in</Nav.Link>
 
-          </Nav>
-          </Container>
-    </Navbar>
+                    </Nav>
+                </Container>
+            </Navbar>
             <Stack gap={3}>
                 <Outlet />
             </Stack>

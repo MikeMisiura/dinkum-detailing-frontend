@@ -10,13 +10,15 @@ function Navigate() {
         <>
             <Navbar bg="light">
                 <Container>
-                    <Navbar.Brand className="ms-4" href="/posts">Test</Navbar.Brand>
+                    <Navbar.Brand className="ms-4" href="/">Dinkum Detailing</Navbar.Brand>
                 </Container>
                 <Container style={{ justifyContent: "right" }}>
                     <Nav className="me-4">
 
-                        <Nav.Link href="/posts">Services</Nav.Link>
-                        <Nav.Link>Log in</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/about-us">About Us</Nav.Link>
+                        <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+                        <Nav.Link href="/login">login</Nav.Link>
 
                     </Nav>
                 </Container>

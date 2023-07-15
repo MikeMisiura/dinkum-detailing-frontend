@@ -8,15 +8,15 @@ function App() {
   return (
     <div>
       <div>
-            <BrowserRouter>
-                <Routes>
-                <Route path='/' element={<Navigate/>}>
-                  </Route>
-                </Routes>
-            </BrowserRouter>
-            <p>Test</p>
-            <Button>Bootstrap Test</Button>
-        </div>
+        <Navigate />
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+        <p>Test</p>
+        <Button>Bootstrap Test</Button>
+      </div>
     </div>
   );
 }

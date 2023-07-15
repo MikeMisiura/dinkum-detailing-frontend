@@ -2,8 +2,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import Stack from 'react-bootstrap/Stack'
 import { Outlet } from "react-router-dom"
-import { useNavigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap';
+
 function Navigate() {
 
     return (

@@ -29,7 +29,7 @@ function ContactForm() {
     }
 
     return (
-        <>
+        <div>
             <Form onSubmit={handleSubmit} >
                 <Form.Label>Email  </Form.Label>
                 <Form.Control
@@ -50,7 +50,7 @@ function ContactForm() {
                 />
                 <Button type="submit">Submit form</Button>
             </Form>
-        </>
+        </div>
     )
 };
 

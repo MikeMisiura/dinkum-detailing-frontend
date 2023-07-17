@@ -7,10 +7,11 @@ import Home from './pages/HomePage';
 import About from './pages/AboutPage';
 import ContactUs from './pages/ContactUsPage';
 import Login from './pages/LogInPage';
+import { MessageProvider } from './contexts/MessageProvider';
 
 function App() {
   return (
-    <div>
+    <MessageProvider>
       <div>
         <Navigate />
         <BrowserRouter>
@@ -21,10 +22,10 @@ function App() {
             <Route path='/login' element={<Login />} />
           </Routes>
         </BrowserRouter>
-        <p>Test</p>
-        <Button>Bootstrap Test</Button>
+        {/* <p>Test</p>
+        <Button>Bootstrap Test</Button> */}
       </div>
-    </div>
+    </MessageProvider>
   );
 }
 

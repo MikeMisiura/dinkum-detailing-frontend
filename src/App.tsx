@@ -9,9 +9,11 @@ import ContactUs from './pages/ContactUsPage';
 import Login from './pages/LogInPage';
 import { MessageProvider } from './contexts/MessageProvider';
 import DinkumColors from './theme/dinkumColors';
+import { UserProvider } from './contexts/UserProvider';
 
 function App() {
   return (
+    <UserProvider>
     <MessageProvider>
       <Navigate />
       <Container>
@@ -37,6 +39,7 @@ function App() {
         <Col sm={2} md={3} lg={4}></Col>
       </Container>
     </MessageProvider>
+    </UserProvider>
   );
 }
 

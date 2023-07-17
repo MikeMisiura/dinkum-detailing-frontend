@@ -2,15 +2,36 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import Stack from 'react-bootstrap/Stack'
 import { Outlet } from "react-router-dom"
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
+import DinkumColors from '../theme/dinkumColors';
 
 function Navigate() {
 
     return (
         <>
-            <Navbar bg="light">
+            <Navbar
+                style={{
+                    backgroundColor: DinkumColors.darkBlue,
+                    color: DinkumColors.white
+                }}
+                variant="dark"
+            // expand="lg"
+            >
                 <Container>
-                    <Navbar.Brand className="ms-4" href="/">Dinkum Detailing</Navbar.Brand>
+                    <Navbar.Brand
+                        style={{ color: DinkumColors.grey }}
+                        className="ms-4"
+                        href="/"
+                    >
+                        <Image
+                            alt="logo"
+                            src='/images/logos/white-logo.png'
+                            width="35"
+                            height="35"
+                            className="d-inline-block align-top"
+                        />{' '}
+                        Dinkum Detailing
+                    </Navbar.Brand>
                 </Container>
                 <Container style={{ justifyContent: "right" }}>
                     <Nav className="me-4">

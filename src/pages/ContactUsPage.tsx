@@ -11,7 +11,6 @@ function ContactUs() {
             <p>Feel free to call us at {companyPhoneNumber}, email us at {companyEmail}, or fill out the form below.</p>
 
             <ContactForm />
-
         </div>
     )
 }

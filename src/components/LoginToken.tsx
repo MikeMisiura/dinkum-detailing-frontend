@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import { useParams } from "react-router-dom";
+import Home from "../pages/HomePage";
 
 function LoginToken(props: any) {
 
@@ -13,7 +14,7 @@ function LoginToken(props: any) {
     logInUser(params.token)
 
     return (
-        <h1>LoginToken</h1>
+        <Home/>
     )
 }
 

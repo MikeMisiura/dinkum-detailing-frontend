@@ -10,6 +10,8 @@ import Login from './pages/LogInPage';
 import { MessageProvider } from './contexts/MessageProvider';
 import DinkumColors from './theme/dinkumColors';
 import { UserProvider } from './contexts/UserProvider';
+import Services from './pages/ServicesPage';
+import LoginToken from './components/LoginToken';
 
 function App() {
   return (
@@ -28,9 +30,11 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path='/services' element={<Services />} />
                 <Route path='/about-us' element={<About />} />
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/login/token/:token' element={<LoginToken />} />
               </Routes>
             </BrowserRouter>
           </div>

@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import Stack from 'react-bootstrap/Stack'
 import { Outlet } from "react-router-dom"
-import { Container, Image } from 'react-bootstrap';
+import { Container, Image, NavDropdown } from 'react-bootstrap';
 import DinkumColors from '../theme/dinkumColors';
 
 function Navigate() {
@@ -35,12 +35,13 @@ function Navigate() {
                 </Container>
                 <Container style={{ justifyContent: "right" }}>
                     <Nav className="me-4">
-
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/about-us">About Us</Nav.Link>
+                        <NavDropdown title="Home" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/">Home</NavDropdown.Item>
+                            <NavDropdown.Item href="/services">Services</NavDropdown.Item>
+                            <NavDropdown.Item href="/about-us">About Us</NavDropdown.Item>
+                        </NavDropdown>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
-
                     </Nav>
                 </Container>
             </Navbar>

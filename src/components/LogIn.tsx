@@ -1,17 +1,13 @@
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IUser } from '../@types/user';
 import UserContext from '../contexts/UserContext';
 
-
 function LogInForm() {
 
-    // hooks
     const [email, setEmail] = useState<string>("");
-
-    let navigate = useNavigate();
 
     let { emailUser } = useContext(UserContext);
 
@@ -22,9 +18,33 @@ function LogInForm() {
             email
         }
 
-        emailUser(newEmail)
-        navigate('/')
+        emailUser(newEmail);
     }
+
+    function CheckEmail(props: any) {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Check your email to login!
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <h6>Didn't get an email?</h6>
+                    <Button onClick={handleSubmit}>Resend</Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
+    const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <div>
@@ -37,7 +57,16 @@ function LogInForm() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <Button type="submit">Submit form</Button>
+                <>
+                    <Button variant="primary" onClick={() => setModalShow(true)} type="submit">
+                        Log In
+                    </Button>
+
+                    <CheckEmail
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
+                </>
             </Form>
         </div>
     )

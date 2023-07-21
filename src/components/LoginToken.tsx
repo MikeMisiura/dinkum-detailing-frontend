@@ -2,6 +2,7 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import { useParams } from "react-router-dom";
 import Home from "../pages/HomePage";
+import { Toast } from "react-bootstrap";
 
 function LoginToken(props: any) {
 
@@ -14,7 +15,10 @@ function LoginToken(props: any) {
     logInUser(params.token)
 
     return (
+        <>
         <Home/>
+        
+        </>
     )
 }
 

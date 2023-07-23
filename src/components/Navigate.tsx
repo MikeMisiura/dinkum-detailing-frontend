@@ -39,6 +39,7 @@ function Navigate() {
                             <NavDropdown.Item href="/about-us">About Us</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+                        <Nav.Link href="/estimate">Get a FREE Estimate Now</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
                     </Nav>
                 </Container>

@@ -11,6 +11,7 @@ import { MessageProvider } from './contexts/MessageProvider';
 import DinkumColors from './theme/dinkumColors';
 import { UserProvider } from './contexts/UserProvider';
 import LoginToken from './components/LoginToken';
+import EstimatePage from './pages/EstimatePage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/about-us' element={<About />} />
                 <Route path='/contact-us' element={<ContactUs />} />
+                <Route path='/estimate' element={<EstimatePage />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/login/token/:token' element={<LoginToken />} />
               </Routes>

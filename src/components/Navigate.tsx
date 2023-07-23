@@ -6,7 +6,6 @@ import { Container, Image, NavDropdown } from 'react-bootstrap';
 import DinkumColors from '../theme/dinkumColors';
 
 function Navigate() {
-
     return (
         <>
             <Navbar
@@ -37,7 +36,6 @@ function Navigate() {
                     <Nav className="me-4">
                         <NavDropdown title="Home" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/">Home</NavDropdown.Item>
-                            <NavDropdown.Item href="/services">Services</NavDropdown.Item>
                             <NavDropdown.Item href="/about-us">About Us</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>

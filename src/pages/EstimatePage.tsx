@@ -1,3 +1,4 @@
+import EstimateForm from "../components/EstimateForm";
 
 
 function EstimatePage() {
@@ -5,7 +6,7 @@ function EstimatePage() {
     return (
         <>
         <h1>EstimatePage</h1>
-        {/* <EstimateForm/> */}
+        <EstimateForm/>
         </>
     )
 }

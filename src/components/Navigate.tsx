@@ -1,13 +1,10 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import Stack from 'react-bootstrap/Stack'
-import { Outlet } from "react-router-dom"
 import { Container, Image, NavDropdown } from 'react-bootstrap';
 import DinkumColors from '../theme/dinkumColors';
 
 function Navigate() {
     return (
-        <>
             <Navbar
                 style={{
                     backgroundColor: DinkumColors.darkBlue,
@@ -44,10 +41,6 @@ function Navigate() {
                     </Nav>
                 </Container>
             </Navbar>
-            <Stack gap={3}>
-                <Outlet />
-            </Stack>
-        </>
     )
 }
 

@@ -12,6 +12,7 @@ import DinkumColors from './theme/dinkumColors';
 import { UserProvider } from './contexts/UserProvider';
 import LoginToken from './components/LoginToken';
 import EstimatePage from './pages/EstimatePage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         </Col>
         <Col sm={2} md={3} lg={4}></Col>
       </Container>
+      <Footer />
     </MessageProvider>
     </UserProvider>
   );

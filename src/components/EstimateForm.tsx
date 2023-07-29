@@ -2,8 +2,8 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MessageContext from '../contexts/MessageContext';
-import { IMessage } from '../@types/message';
+import EstimateContext from '../contexts/EstimateContext';
+import { IEstimate } from '../@types/estimate';
 
 
 function EstimateForm() {
@@ -15,35 +15,36 @@ function EstimateForm() {
     const [conditioner, setConditioner] = useState<boolean>(false);
     const [pets, setPets] = useState<boolean>(false);
     const [smoke, setSmoke] = useState<boolean>(false);
-    const [estimate, setEstimate] = useState<number>(175);
+    const [price, setPrice] = useState<number>(175);
 
     let navigate = useNavigate();
-    let { createMessage } = useContext(MessageContext);
+    let { createEstimate } = useContext(EstimateContext);
 
+    // --------Pricing----------
     useEffect(() => {
-        let newEstimate = 175
-        if (seats > 5) { newEstimate += (seats - 5) * 5 };
+        let newEstimatePrice = 125
+        if (seats > 5) { newEstimatePrice += (seats - 5) * 5 };
         if (leather) {
-            newEstimate += 10
-            if (conditioner) { newEstimate += seats * 3 };
+            newEstimatePrice += 10
+            if (conditioner) { newEstimatePrice += seats * 3 };
         };
-        if (pets) { newEstimate += 10 };
+        if (pets) { newEstimatePrice += 10 };
+        if (smoke) { newEstimatePrice += 10 };
 
-        setEstimate(newEstimate)
-    }, [seats, leather, conditioner, pets])
-
+        setPrice(newEstimatePrice)
+    }, [seats, leather, conditioner, pets, smoke])
+    // --------Pricing----------
 
     function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
-        let newMessage: IMessage = {
-            email,
-            message: `Total: $${estimate}, Seats: ${seats}, ` + 
-                `Pets: ${pets}, Smoking: ${smoke}`
+        let newEstimate: IEstimate = {
+            email, seats, leather, conditioner,
+            price, pets, smoke
         }
 
-        createMessage(newMessage)
-        // navigate('/')
+        createEstimate(newEstimate)
+        navigate('/')
     }
 
     return (
@@ -103,7 +104,7 @@ function EstimateForm() {
                 />
                 {smoke && <p>Due to the pervasiveness of smoke, we may not get all of the smoke smell out of your vehicle.</p>}
 
-                <h2>Your total estimate is: ${estimate}</h2>
+                <h2>Your total estimate is: ${price}</h2>
 
                 <Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
                 <Form.Control

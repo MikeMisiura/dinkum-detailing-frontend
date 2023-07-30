@@ -55,7 +55,7 @@ function EstimateForm() {
             price, pets, smoke
         }
 
-        createEstimate(newEstimate)
+        await createEstimate(newEstimate)
 
         // reCAPTCHA
         localStorage.setItem('reCAPTCHAToken', '')

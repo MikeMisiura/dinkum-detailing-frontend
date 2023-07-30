@@ -39,7 +39,7 @@ function ContactForm() {
             message
         }
 
-        createMessage(newMessage)
+        await createMessage(newMessage)
         // reCAPTCHA
         localStorage.setItem('reCAPTCHAToken', '')
 

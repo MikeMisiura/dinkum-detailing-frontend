@@ -1,6 +1,5 @@
-import React from 'react';
 import './App.css';
-import { Button, Col, Container } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 import Navigate from './components/Navigate';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/HomePage';
@@ -13,37 +12,40 @@ import { UserProvider } from './contexts/UserProvider';
 import LoginToken from './components/LoginToken';
 import EstimatePage from './pages/EstimatePage';
 import Footer from './components/Footer';
+import { EstimateProvider } from './contexts/EstimateProvider';
 
 function App() {
   return (
     <UserProvider>
-    <MessageProvider>
-      <Navigate />
-      <Container>
-        <Col sm={2} md={3} lg={4}></Col>
-        <Col>
-          <div
-            style={{
-              backgroundColor: DinkumColors.grey,
-              color: DinkumColors.black,
-            }}
-            className='m-5'>
-            <BrowserRouter>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about-us' element={<About />} />
-                <Route path='/contact-us' element={<ContactUs />} />
-                <Route path='/estimate' element={<EstimatePage />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/login/token/:token' element={<LoginToken />} />
-              </Routes>
-            </BrowserRouter>
-          </div>
-        </Col>
-        <Col sm={2} md={3} lg={4}></Col>
-      </Container>
-      <Footer />
-    </MessageProvider>
+      <MessageProvider>
+        <EstimateProvider>
+          <Navigate />
+          <Container>
+            <Col sm={2} md={3} lg={4}></Col>
+            <Col>
+              <div
+                style={{
+                  backgroundColor: DinkumColors.grey,
+                  color: DinkumColors.black,
+                }}
+                className='m-5'>
+                <BrowserRouter>
+                  <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/about-us' element={<About />} />
+                    <Route path='/contact-us' element={<ContactUs />} />
+                    <Route path='/estimate' element={<EstimatePage />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/login/token/:token' element={<LoginToken />} />
+                  </Routes>
+                </BrowserRouter>
+              </div>
+            </Col>
+            <Col sm={2} md={3} lg={4}></Col>
+          </Container>
+          <Footer />
+        </EstimateProvider>
+      </MessageProvider>
     </UserProvider>
   );
 }

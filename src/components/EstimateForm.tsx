@@ -1,9 +1,10 @@
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 function EstimateForm() {
@@ -20,6 +21,11 @@ function EstimateForm() {
     let navigate = useNavigate();
     let { createEstimate } = useContext(EstimateContext);
 
+    // reCAPTCHA
+    const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
+    const recaptchaRef = useRef<ReCAPTCHA>(null)
+
+
     // --------Pricing----------
     useEffect(() => {
         let newEstimatePrice = 125
@@ -35,15 +41,25 @@ function EstimateForm() {
     }, [seats, leather, conditioner, pets, smoke])
     // --------Pricing----------
 
-    function handleSubmit(event: { preventDefault: () => void; }) {
+    async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
+
+        // reCAPTCHA
+        let reCaptchaToken = await recaptchaRef.current?.executeAsync()
+        recaptchaRef.current?.reset();
+        if (!reCaptchaToken) { reCaptchaToken = "no token" }
+        localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
 
         let newEstimate: IEstimate = {
             email, seats, leather, conditioner,
             price, pets, smoke
         }
 
-        createEstimate(newEstimate)
+        await createEstimate(newEstimate)
+
+        // reCAPTCHA
+        localStorage.setItem('reCAPTCHAToken', '')
+
         navigate('/')
     }
 
@@ -51,6 +67,12 @@ function EstimateForm() {
         <div>
 
             <Form onSubmit={handleSubmit}>
+
+                <ReCAPTCHA
+                    sitekey={reCAPTCHAKey}
+                    size="invisible"
+                    ref={recaptchaRef}
+                />
 
                 <Form.Label>Number of Seats</Form.Label>
                 <Form.Range

@@ -1,11 +1,10 @@
-import { Badge, Button, Card, Carousel } from "react-bootstrap";
+import { Badge, Button, Card, Carousel, Container } from "react-bootstrap";
 import './HomePage.css';
 
 function Home() {
 
     return (
         <>
-            <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></link>
             <img
                 alt="logo"
                 src='/images/logos/logo.png'
@@ -17,29 +16,29 @@ function Home() {
             <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "100px", textShadow: "2px 2px 4px #000000", marginBottom: "40px" }}>DINKUM DETAILING</h1>
 
             <div>
-                <Carousel controls={false}>
+                <Carousel controls={false} interval={3000}>
                     <Carousel.Item>
-                    <img
-                        src="/images/cars/car4.png"
-                    />
+                        <img
+                            src="/images/cars/car4.png"
+                        />
                         <Carousel.Caption>
                             <h3>First slide label</h3>
                             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                    <img
-                        src="/images/cars/car5.png"
-                    />
+                        <img
+                            src="/images/cars/car5.png"
+                        />
                         <Carousel.Caption>
                             <h3>Second slide label</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                    <img
-                        src="/images/cars/car6.png"
-                    />
+                        <img
+                            src="/images/cars/car6.png"
+                        />
                         <Carousel.Caption>
                             <h3>Third slide label</h3>
                             <p>
@@ -48,28 +47,30 @@ function Home() {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-                </div>
+            </div>
 
-                <br/>
+            <br />
 
-                <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px", backgroundColor: "#3888CB" }}>
-                    TEXT
-                </h1>
-                <h1 style={{ color: "white", fontFamily: 'Rubik', fontSize: "25px", textAlign: "center" }}>
-                    Find us on Google!
-                    <br/>
-                    Short Paragraph for who what when where how and why
-                </h1>
 
-                
+            <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px", backgroundColor: "#3888CB" }}>
+                TEXT
+            </h1>
 
-                <br/>
+            <h1 style={{ color: "white", fontFamily: 'Rubik', fontSize: "25px", textAlign: "center" }}>
+                Find us on Google!
+                <br />
+                Short Paragraph for who what when where how and why
+            </h1>
 
-                <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px" }}>
-                    Services
-                </h1>
 
-                <div style={{ display: "flex" }}>
+
+            <br />
+
+            <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px" }}>
+                Services
+            </h1>
+
+            <div style={{ display: "flex" }}>
                 <Card style={{ width: "30rem", margin: "10px" }} className="card">
                     <Card.Img variant="top" src="/images/cars/car1.png" />
                     <Card.Body>
@@ -102,19 +103,19 @@ function Home() {
                 </Card>
             </div>
 
-            <br/>
+            <br />
 
             <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px" }}>
-                    Interested?
+                Interested?
             </h1>
 
-            <Button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="card">Get an Estimate</Button>
+            <Button style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} className="card">Get an Estimate</Button>
 
-            <br/>
+            <br />
 
             <h1 style={{ color: "white", textAlign: "center", fontFamily: 'Rubik', textShadow: "2px 2px 4px #000000", fontSize: "75px", marginBottom: "0px", backgroundColor: "#3888CB" }}>
-                    Reviews
-            </h1>   
+                Reviews
+            </h1>
         </>
     )
 }

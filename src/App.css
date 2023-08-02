@@ -1,0 +1,11 @@
+
+.containerBody {
+    min-height: calc(100vh - 61px - 217px );
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+position: absolute;
+width: 100%;
+  }

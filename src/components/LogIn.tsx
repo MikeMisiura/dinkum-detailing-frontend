@@ -1,4 +1,4 @@
-import { Button, Modal, Toast } from 'react-bootstrap';
+import { Alert, Button, Container, Fade, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState } from 'react';
 import './LogIn.css'
@@ -11,18 +11,23 @@ function LogInForm() {
 
     let { emailUser } = useContext(UserContext);
 
+    const [modalShow, setModalShow] = React.useState(false);
+
+    const [valid, setValid] = useState(true);
+    const [notValid, setNotValid] = useState(true);
+
     function CheckEmail(props: any) {
+        setNotValid(true)
         return (
             <Modal
                 {...props}
                 size="md"
-                aria-labelledby="contained-modal-title-vcenter"
                 centered
                 backdrop="static"
                 keyboard={false}
             >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Header closeButton onClick={() => setValid(true)}>
+                    <Modal.Title>
                         Check your email to login!
                     </Modal.Title>
                 </Modal.Header>
@@ -34,8 +39,6 @@ function LogInForm() {
         );
     }
 
-    const [modalShow, setModalShow] = React.useState(false);
-
     function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
@@ -45,10 +48,10 @@ function LogInForm() {
         }
 
         emailUser(newEmail).then(() => {
-
+            setValid(false)
         }).catch((error: any) => {
             console.log(error);
-            window.alert("Email Required");
+            setNotValid(false)
         });
     }
 
@@ -58,11 +61,11 @@ function LogInForm() {
     }
 
     return (
-        <div className="Form-container">
+        <div className="FormContainer">
             <Form onSubmit={handleSubmit} className="Form">
-                <div className="Form-content">
-                    <h3 className="Form-title">LOG IN</h3>
-                    <div className="form-group mt-3">
+                <div className="FormContent">
+                    <h3 className="FormTitle">LOG IN</h3>
+                    <div className="mt-3">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             placeholder="Enter email"
@@ -72,6 +75,13 @@ function LogInForm() {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </div>
+                    {(() => {
+                    if (notValid === false) {
+                        return (
+                            <h6 className="required">Please Enter a Valid Email</h6>
+                        )
+                    }
+                })()}
                     <div className="d-grid gap-2 mt-3">
                         <Button variant="primary" onClick={() => setModalShow(true)} type="submit">
                             Log In
@@ -81,7 +91,7 @@ function LogInForm() {
             </Form>
             <div>
                 {(() => {
-                    if (email != "" && validateEmail(email) === true) {
+                    if (valid === false && validateEmail(email) === true) {
                         return (
                             <CheckEmail
                                 show={modalShow}

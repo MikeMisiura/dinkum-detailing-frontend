@@ -1,5 +1,4 @@
-.FormContainer {
-    display: flex;
+.ContactContainer {
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -8,8 +7,7 @@
     top: 0;
   }
   
-  .Form {
-    width: 450px;
+  .ContactForm {
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -17,22 +15,16 @@
     background-color: white;
   }
   
-  .FormContent {
+  .ContactContent {
     padding-left: 12%;
     padding-right: 12%;
   }
   
-  .FormTitle {
+  .ContactTitle {
     text-align: center;
     font-size: 32px;
     font-weight: 800;
     font-family: "Rubik";
-  }
-  
-  label {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(34, 34, 34);
   }
 
   .required {

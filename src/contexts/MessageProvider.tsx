@@ -13,7 +13,11 @@ export function MessageProvider({ children }: any) {
         // console.log("provider: ")
         // console.log(message)
 
-        return axios.post(baseUrl, message)
+        let myHeaders = {
+            reCAPTCHA: `reCAPTCHA ${localStorage.getItem('reCAPTCHAToken')}`
+        };
+
+        return axios.post(baseUrl, message, { headers: myHeaders })
             .then(response => {
                 return new Promise(resolve => resolve(response.data));
             }

@@ -1,11 +1,10 @@
 import axios from "axios";
 import { IEstimate } from "../@types/estimate";
 import EstimateContext from "./EstimateContext";
+import { baseUrl } from "../environmentVariableTypes";
 
 
 export function EstimateProvider({ children }: any) {
-
-    const baseUrl = "http://localhost:3000/api/estimate/";
 
     function createEstimate(Estimate: IEstimate) {
         let myHeaders = {

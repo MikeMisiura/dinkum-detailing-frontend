@@ -1,11 +1,12 @@
-import { Button } from 'react-bootstrap';
+import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
 import ReCAPTCHA from 'react-google-recaptcha';
-
+import "./EstimateForm.css"
+import { Check2, Calendar2Check } from 'react-bootstrap-icons';
 
 function EstimateForm() {
 
@@ -17,6 +18,9 @@ function EstimateForm() {
     const [pets, setPets] = useState<boolean>(false);
     const [smoke, setSmoke] = useState<boolean>(false);
     const [price, setPrice] = useState<number>(175);
+    const [modalShow, setModalShow] = React.useState(false);
+    const [valid, setValid] = useState(true);
+    const [notValidEmail, setNotValidEmail] = useState(true);
 
     let navigate = useNavigate();
     let { createEstimate } = useContext(EstimateContext);
@@ -25,6 +29,29 @@ function EstimateForm() {
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
     const recaptchaRef = useRef<ReCAPTCHA>(null)
 
+    function validateEmail(email: string) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    function MessageSent(props: any) {
+        return (
+            <Modal
+                {...props}
+                size="md"
+                centered
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton onClick={() => setValid(true)}>
+                    <Modal.Title>
+                        Your Estimate has been Locked In!
+                        <h6>Check your email for more info!</h6>
+                    </Modal.Title>
+                </Modal.Header>
+            </Modal>
+        );
+    }
 
     // --------Pricing----------
     useEffect(() => {
@@ -37,12 +64,17 @@ function EstimateForm() {
         if (pets) { newEstimatePrice += 10 };
         if (smoke) { newEstimatePrice += 10 };
 
+        leatherFalse()
+
         setPrice(newEstimatePrice)
     }, [seats, leather, conditioner, pets, smoke])
     // --------Pricing----------
 
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
+
+        setModalShow(true)
+        setNotValidEmail(true)
 
         // reCAPTCHA
         let reCaptchaToken = await recaptchaRef.current?.executeAsync()
@@ -55,93 +87,157 @@ function EstimateForm() {
             price, pets, smoke
         }
 
-        await createEstimate(newEstimate)
+        createEstimate(newEstimate).then(() => {
+            // reCAPTCHA
+            localStorage.setItem('reCAPTCHAToken', '')
+            setValid(false)
+        }).catch((error: any) => {
+            console.log(error);
+            if (email === "" || validateEmail(email) === false) {
+                setNotValidEmail(false)
+            }
+        })
+    }
 
-        // reCAPTCHA
-        localStorage.setItem('reCAPTCHAToken', '')
-
-        navigate('/')
+    function leatherFalse() {
+        if (leather === false) {
+            setConditioner(false)
+        }
     }
 
     return (
         <div>
+            <Row>
 
-            <Form onSubmit={handleSubmit}>
 
-                <ReCAPTCHA
-                    sitekey={reCAPTCHAKey}
-                    size="invisible"
-                    ref={recaptchaRef}
-                />
 
-                <Form.Label>Number of Seats</Form.Label>
-                <Form.Range
-                    name="seats"
-                    value={seats}
-                    onChange={e => setSeats(parseInt(e.target.value))}
-                    min="5"
-                    max="12"
-                />
-                <Form.Label>
-                    {seats}
-                    {seats === 5 && " or less"}
-                    {seats === 12 && " or more"}
-                </Form.Label>
+                <Col className="col-sm-8">
 
-                <Form.Check
-                    type="switch"
-                    label="Does you vehicle have Leather Seats?"
-                    name="leather"
-                    checked={leather}
-                    onChange={e => setLeather(e.target.checked)}
-                    as="input"
-                />
+                    <Card className="cardEstimate">
 
-                <Form.Check
-                    disabled={!leather}
-                    type="switch"
-                    label="Do you want your Leather Seats Conditioned?"
-                    name="conditioner"
-                    checked={conditioner}
-                    onChange={e => setConditioner(e.target.checked)}
-                    as="input"
-                />
 
-                <Form.Check
-                    type="switch"
-                    label="Are pets regularly in the vehicle?"
-                    name="pets"
-                    checked={pets}
-                    onChange={e => setPets(e.target.checked)}
-                    as="input"
-                />
+                        <h1 className="FormTitle">ESTIMATE</h1>
+                        <Form.Label>Number of Seats</Form.Label>
+                        <Form.Range
+                            name="seats"
+                            value={seats}
+                            onChange={e => setSeats(parseInt(e.target.value))}
+                            min="5"
+                            max="12"
+                        />
+                        <Form.Label>
+                            {seats}
+                            {seats === 5 && " or less"}
+                            {seats === 12 && " or more"}
+                        </Form.Label>
 
-                <Form.Check
-                    type="switch"
-                    label="Do you smoke in the vehicle?"
-                    name="smoke"
-                    checked={smoke}
-                    onChange={e => setSmoke(e.target.checked)}
-                    as="input"
-                />
-                {smoke && <p>Due to the pervasiveness of smoke, we may not get all of the smoke smell out of your vehicle.</p>}
+                        <Form.Check
+                            type="switch"
+                            label="Does you vehicle have Leather Seats?"
+                            name="leather"
+                            checked={leather}
+                            onChange={e => setLeather(e.target.checked)}
+                            as="input"
+                        />
 
-                <h2>Your total estimate is: ${price}</h2>
+                        <Form.Check
+                            disabled={!leather}
+                            type="switch"
+                            label="Do you want your Leather Seats Conditioned?"
+                            name="conditioner"
+                            checked={conditioner}
+                            onChange={e => setConditioner(e.target.checked)}
+                            as="input"
+                        />
 
-                <Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
-                <Form.Control
-                    placeholder="Enter email"
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-                <Button
-                    disabled={!email}
-                    type="submit"
-                >Submit form</Button>
+                        <Form.Check
+                            type="switch"
+                            label="Are pets regularly in the vehicle?"
+                            name="pets"
+                            checked={pets}
+                            onChange={e => setPets(e.target.checked)}
+                            as="input"
+                        />
 
-            </Form>
+                        <Form.Check
+                            type="switch"
+                            label="Do you smoke in the vehicle?"
+                            name="smoke"
+                            checked={smoke}
+                            onChange={e => setSmoke(e.target.checked)}
+                            as="input"
+                        />
+                        {smoke && <p>Due to the pervasiveness of smoke, we may not get all of the smoke smell out of your vehicle.</p>}
+
+
+
+                    </Card>
+                </Col>
+
+
+
+                <Col>
+                    <Card className="cardEstimate">
+
+                        <Card.Body>
+
+                            <p className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></p>
+                            <Calendar2Check style={{ marginLeft: "5%" }} size={18} />
+                            <p className="cardAndExpire" style={{ marginTop: "1px" }}>
+                                {seats} Seats
+                                {seats === 5 && " or less"}
+                                {seats === 12 && " or more"}</p>
+                            <p className="cardAndExpire">{leather === true && <p>Leather <Check2 color="green" size={18} /></p>}</p>
+                            <p className="cardAndExpire">{conditioner === true && <p>Conditioned <Check2 color="green" size={18} /></p>}</p>
+                            <p className="cardAndExpire">{pets === true && <p>Pets <Check2 color="green" size={18} /></p>}</p>
+                            <p className="cardAndExpire" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</p>
+
+                            <div className="payment">
+
+                                <p className="heading2"><strong>LOCK IN YOUR ESTIMATE</strong></p>
+                                <Form className="cardAndExpire"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                    <ReCAPTCHA
+                                        sitekey={reCAPTCHAKey}
+                                        size="invisible"
+                                        ref={recaptchaRef}
+                                    />
+                                    <Form.Control
+                                        placeholder="Enter email"
+                                        type="text"
+                                        name="email"
+                                        value={email}
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                    {(() => {
+                                        if (notValidEmail === false) {
+                                            return (
+                                                <Form.Label className="requiredEstimate">Please Enter a Valid Message</Form.Label>
+                                            )
+                                        }
+                                    })()}
+                                </Form>
+
+                                <br />
+                            </div>
+                            <a href="" className="purchaseLink" onClick={handleSubmit} style={{ textDecoration: "none" }}>
+                                <div className="cardFooter text-center">
+                                    SUBMIT
+                                </div>
+                            </a>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            {(() => {
+                    if (valid === false && validateEmail(email) === true) {
+                        return (
+                            <MessageSent
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                            />
+                        )
+                    }
+                })()}
         </div>
     )
 };

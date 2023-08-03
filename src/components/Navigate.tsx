@@ -31,10 +31,8 @@ function Navigate() {
                 </Container>
                 <Container style={{ justifyContent: "right" }}>
                     <Nav className="me-4">
-                        <NavDropdown title="Home" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/">Home</NavDropdown.Item>
-                            <NavDropdown.Item href="/about-us">About Us</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/about-us">About</Nav.Link>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                         <Nav.Link href="/estimate">Get a FREE Estimate Now</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>

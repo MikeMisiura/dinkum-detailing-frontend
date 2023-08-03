@@ -31,6 +31,11 @@ function ContactForm() {
     const [notValidEmail, setnotValidEmail] = useState(true);
     const [notValidMessage, setnotValidMessage] = useState(true);
 
+    function validateEmail(email: string) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
     function MessageSent(props: any) {
         return (
             <Modal
@@ -76,17 +81,15 @@ function ContactForm() {
             if (email === "" && message === "") {
                 setnotValidEmail(false)
                 setnotValidMessage(false)
-            }else if (email === "") {
+            }else if (validateEmail(email) === false && message === "") {
+                setnotValidEmail(false)
+                setnotValidMessage(false)
+            }else if (email === "" || validateEmail(email) === false ) {
                 setnotValidEmail(false)
             }else{
                 setnotValidMessage(false)
             }
         });
-    }
-
-    function validateEmail(email: string) {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
     }
 
     return (
@@ -144,7 +147,7 @@ function ContactForm() {
                 {(() => {
                     if (notValidMessage === false) {
                         return (
-                            <h6 className="required">Please Enter a Valid Message</h6>
+                            <Form.Label className="required">Please Enter a Valid Message</Form.Label>
                         )
                     }
                 })()}

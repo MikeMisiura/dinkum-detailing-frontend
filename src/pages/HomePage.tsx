@@ -71,7 +71,7 @@ function Home() {
             </h1>
 
             <div style={{ display: "flex" }}>
-                <Card style={{ width: "30rem", margin: "10px" }} className="card">
+                <Card style={{ width: "30rem", margin: "10px" }} className="cardHome">
                     <Card.Img variant="top" src="/images/cars/car1.png" />
                     <Card.Body>
                         <Card.Title>Card Title <Badge bg="secondary">New</Badge></Card.Title>

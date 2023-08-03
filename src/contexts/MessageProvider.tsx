@@ -2,11 +2,10 @@ import axios from "axios";
 // import UserContext from "./UserContext";
 import { IMessage } from "../@types/message";
 import MessageContext from "./MessageContext";
+import { baseUrl } from "../environmentVariableTypes";
 
 
 export function MessageProvider({ children }: any) {
-
-    const baseUrl = "http://localhost:3000/api/messages/";
 
     function createMessage(message: IMessage) {
 

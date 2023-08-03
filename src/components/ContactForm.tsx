@@ -69,7 +69,7 @@ function ContactForm() {
 
         createMessage(newMessage).then(() => {
             // reCAPTCHA
-            localStorage.setItem('reCAPTCHAToken', '')
+            // localStorage.setItem('reCAPTCHAToken', '')
             setValid(false)
         }).catch((error: any) => {
             console.log(error);

@@ -1,7 +1,6 @@
-import { Button, Modal, Popover } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { IMessage } from '../@types/message';
 import MessageContext from '../contexts/MessageContext';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -13,8 +12,6 @@ function ContactForm() {
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
     const [message, setMessage] = useState<string>("");
-
-    let navigate = useNavigate();
 
     // reCAPTCHA
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"

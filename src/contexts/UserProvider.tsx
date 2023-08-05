@@ -1,8 +1,10 @@
 import axios from "axios";
 import UserContext from "./UserContext";
-import { baseUrl } from "../environmentVariableTypes";
+import { backendUrl } from "../environmentVariableTypes";
 
 export function UserProvider({ children }: any) {
+
+    const baseUrl: string = backendUrl + "api/user/"
 
     function createUser(email: any) {
         let user = { email };

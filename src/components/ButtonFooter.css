@@ -1,0 +1,9 @@
+.buttonShape {
+    box-shadow: 1px 1px 6px 1px grey;
+    width: 200px;
+}
+
+.buttonShape:hover{
+    transform: scale(1.05);
+    box-shadow: 1 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}

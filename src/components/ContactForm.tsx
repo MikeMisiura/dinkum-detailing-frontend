@@ -151,7 +151,7 @@ function ContactForm() {
 
                 </div>
                 <div className="d-grid gap-2 mt-3">
-                <Button onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
+                <Button style={{backgroundColor: "#3888CB"}} onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
                 </div>
                 </div>
             </Form>

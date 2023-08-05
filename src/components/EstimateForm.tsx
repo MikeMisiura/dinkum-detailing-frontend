@@ -1,4 +1,4 @@
-import { Card, Col, Modal, Row } from 'react-bootstrap';
+import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -174,7 +174,7 @@ function EstimateForm() {
 
                             <div className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></div>
                             <Calendar2Check style={{ marginLeft: "5%" }} size={18} />
-                            <p className="cardAndExpire" style={{ marginTop: "1px" }}>
+                            <p className="review" style={{ marginTop: "1px" }}>
                                 {seats} Seats
                                 {seats === 5 && " or less"}
                                 {seats === 12 && " or more"}</p>
@@ -185,10 +185,10 @@ function EstimateForm() {
                             <div className="cardAndExpire">{pets && <p>Pets <Check2 color="green" size={18} /></p>}</div>
                             <div className="cardAndExpire" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</div>
 
-                            <div className="payment">
+                            <div className="emailEstimate">
 
-                                <p className="heading2"><strong>LOCK IN YOUR ESTIMATE</strong></p>
-                                <Form className="cardAndExpire"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
+                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
                                     <ReCAPTCHA
                                         sitekey={reCAPTCHAKey}
                                         size="invisible"

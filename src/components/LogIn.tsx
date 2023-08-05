@@ -83,7 +83,7 @@ function LogInForm() {
                     }
                 })()}
                     <div className="d-grid gap-2 mt-3">
-                        <Button variant="primary" onClick={() => setModalShow(true)} type="submit">
+                        <Button style={{backgroundColor: "#3888CB"}} onClick={() => setModalShow(true)} type="submit">
                             Log In
                         </Button>
                     </div>

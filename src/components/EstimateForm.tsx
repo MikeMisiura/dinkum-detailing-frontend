@@ -181,21 +181,21 @@ function EstimateForm() {
 
                         <Card.Body>
 
-                            <p className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></p>
+                            <p className="headingEstimate"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></p>
                             <Calendar2Check style={{ marginLeft: "5%" }} size={18} />
-                            <p className="cardAndExpire" style={{ marginTop: "1px" }}>
+                            <p className="review" style={{ marginTop: "1px" }}>
                                 {seats} Seats
                                 {seats === 5 && " or less"}
                                 {seats === 12 && " or more"}</p>
-                            <p className="cardAndExpire">{leather === true && <p>Leather <Check2 color="green" size={18} /></p>}</p>
-                            <p className="cardAndExpire">{conditioner === true && <p>Conditioned <Check2 color="green" size={18} /></p>}</p>
-                            <p className="cardAndExpire">{pets === true && <p>Pets <Check2 color="green" size={18} /></p>}</p>
-                            <p className="cardAndExpire" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</p>
+                            <p className="review">{leather === true && <p>Leather <Check2 color="green" size={18} /></p>}</p>
+                            <p className="review">{conditioner === true && <p>Conditioned <Check2 color="green" size={18} /></p>}</p>
+                            <p className="review">{pets === true && <p>Pets <Check2 color="green" size={18} /></p>}</p>
+                            <p className="review" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</p>
 
-                            <div className="payment">
+                            <div className="emailEstimate">
 
-                                <p className="heading2"><strong>LOCK IN YOUR ESTIMATE</strong></p>
-                                <Form className="cardAndExpire"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
+                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
                                     <ReCAPTCHA
                                         sitekey={reCAPTCHAKey}
                                         size="invisible"
@@ -219,7 +219,7 @@ function EstimateForm() {
 
                                 <br />
                             </div>
-                            <a href="" className="purchaseLink" onClick={handleSubmit} style={{ textDecoration: "none" }}>
+                            <a href=""onClick={handleSubmit} style={{ textDecoration: "none" }}>
                                 <div className="cardFooter text-center">
                                     SUBMIT
                                 </div>

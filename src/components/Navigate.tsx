@@ -13,7 +13,7 @@ function Navigate() {
                 variant="dark"
             // expand="lg"
             >
-                <Container>
+                <Container  style={{ justifyContent: "right" }}>
                     <Navbar.Brand
                         style={{ color: DinkumColors.grey }}
                         className="ms-4"
@@ -29,12 +29,11 @@ function Navigate() {
                         Dinkum Detailing
                     </Navbar.Brand>
                 </Container>
-                <Container style={{ justifyContent: "right" }}>
+                <Container>
                     <Nav className="me-4">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about-us">About</Nav.Link>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>
-                        <Nav.Link href="/estimate">Get a FREE Estimate Now</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
                     </Nav>
                 </Container>

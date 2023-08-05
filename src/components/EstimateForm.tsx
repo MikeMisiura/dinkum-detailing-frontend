@@ -1,7 +1,7 @@
 import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -22,7 +22,6 @@ function EstimateForm() {
     const [valid, setValid] = useState(true);
     const [notValidEmail, setNotValidEmail] = useState(true);
 
-    let navigate = useNavigate();
     let { createEstimate } = useContext(EstimateContext);
 
     // reCAPTCHA
@@ -64,8 +63,6 @@ function EstimateForm() {
         if (pets) { newEstimatePrice += 10 };
         if (smoke) { newEstimatePrice += 10 };
 
-        leatherFalse()
-
         setPrice(newEstimatePrice)
     }, [seats, leather, conditioner, pets, smoke])
     // --------Pricing----------
@@ -97,12 +94,6 @@ function EstimateForm() {
                 setNotValidEmail(false)
             }
         })
-    }
-
-    function leatherFalse() {
-        if (leather === false) {
-            setConditioner(false)
-        }
     }
 
     return (
@@ -181,16 +172,18 @@ function EstimateForm() {
 
                         <Card.Body>
 
-                            <p className="headingEstimate"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></p>
+                            <div className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></div>
                             <Calendar2Check style={{ marginLeft: "5%" }} size={18} />
                             <p className="review" style={{ marginTop: "1px" }}>
                                 {seats} Seats
                                 {seats === 5 && " or less"}
                                 {seats === 12 && " or more"}</p>
-                            <p className="review">{leather === true && <p>Leather <Check2 color="green" size={18} /></p>}</p>
-                            <p className="review">{conditioner === true && <p>Conditioned <Check2 color="green" size={18} /></p>}</p>
-                            <p className="review">{pets === true && <p>Pets <Check2 color="green" size={18} /></p>}</p>
-                            <p className="review" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</p>
+                            <div className="cardAndExpire">
+                                {leather && <p>Leather <Check2 color="green" size={18} /></p>}
+                            </div>
+                            <div className="cardAndExpire"> {conditioner && leather && <p>Conditioned <Check2 color="green" size={18} /></p>}</div>
+                            <div className="cardAndExpire">{pets && <p>Pets <Check2 color="green" size={18} /></p>}</div>
+                            <div className="cardAndExpire" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</div>
 
                             <div className="emailEstimate">
 
@@ -219,11 +212,11 @@ function EstimateForm() {
 
                                 <br />
                             </div>
-                            <a href=""onClick={handleSubmit} style={{ textDecoration: "none" }}>
+                            <Link className="purchaseLink" onClick={handleSubmit} style={{ textDecoration: "none" }} to={''}>
                                 <div className="cardFooter text-center">
                                     SUBMIT
                                 </div>
-                            </a>
+                            </Link>
                         </Card.Body>
                     </Card>
                 </Col>

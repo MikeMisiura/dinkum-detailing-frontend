@@ -42,7 +42,7 @@ function Footer() {
                     </Col>
                     <Col sm="1" />
                     <Col sm="4">
-                        <Button style={{backgroundColor: "#3888CB", borderColor: "#3888CB"}} size="lg" className="me-4" href="/estimate">
+                        <Button  size="lg" className="me-4 myButton" style={{ boxShadow: "none", backgroundColor: "#3888CB", borderColor: "#3888CB" }} href="/estimate">
                             Get a <strong>FREE</strong> Estimate Now
                         </Button>
                     </Col>

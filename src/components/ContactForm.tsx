@@ -17,8 +17,8 @@ function ContactForm() {
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
     const recaptchaRef = useRef<ReCAPTCHA>(null)
 
-    let companyPhoneNumber: string = "(763) 123-1234"
-    let companyEmail: string = "dinkum@change.me"
+    let companyPhoneNumber: string = "(320) 496-6010"
+    let companyEmail: string = "dinkumdetailing@gmail.com"
 
     let { createMessage } = useContext(MessageContext);
 

@@ -1,4 +1,4 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState, useRef } from 'react';
 import { IMessage } from '../@types/message';
@@ -92,7 +92,6 @@ function ContactForm() {
     return (
         <div className="ContactContainer" >
             <Form onSubmit={handleSubmit} className='ContactForm'>
-                {/* under footer, needs fixed */}
                 <ReCAPTCHA
                     sitekey={reCAPTCHAKey}
                     size="invisible"

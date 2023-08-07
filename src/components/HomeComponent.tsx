@@ -20,6 +20,7 @@ function HomeComponent() {
 
             <Container className="center-content">
                 <Col xs="12" md='10' lg='8' xl='7'>
+                    <Card className="cardHome" style={{width: "150%",  right: "25%"}}>
                     <Carousel controls={false} interval={3000}>
                         <Carousel.Item>
                             <Image
@@ -34,6 +35,7 @@ function HomeComponent() {
                             />
                         </Carousel.Item>
                     </Carousel>
+                    </Card>
                 </Col>
             </Container>
 
@@ -45,7 +47,7 @@ function HomeComponent() {
 
             <Container className="center-content">
                 <Row className="center-content">
-                    <Col xs="12" sm="6" md="6" lg="4" className="my-2">
+                    <Col xs="12" sm="12" md="12" lg="4" className="my-2">
                         <Card className="cardHome">
                             <Card.Img variant="top" src="/images/services/basic.jpg" />
                             <Card.Body>
@@ -58,7 +60,7 @@ function HomeComponent() {
                         </Card>
                     </Col>
 
-                    <Col xs="12" sm="6" md="6" lg="4" className="my-2">
+                    <Col xs="12" sm="12" md="12" lg="4" className="my-2">
                         <Card >
                             <Card.Img variant="top" src="/images/services/boat.jpg" />
                             <Card.Body>
@@ -71,7 +73,7 @@ function HomeComponent() {
                         </Card>
                     </Col>
 
-                    <Col xs="12" sm="6" md="6" lg="4" className="my-2">
+                    <Col xs="12" sm="12" md="12" lg="4" className="my-2">
                         <Card >
                             <Card.Img variant="top" src="/images/services/shampoo.jpg" />
                             <Card.Body>
@@ -114,12 +116,12 @@ function HomeComponent() {
                     <h1 className="homeTitle">FIND US</h1>
                     <a className="homeLink" href="https://www.facebook.com/dinkumdetailing" target="_blank">
                         <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
-                            <Facebook style={{ marginRight: "10px" }} />Facebook
+                            <Facebook style={{ marginRight: "10px" }} /><span className="linked">Facebook</span>
                         </h4>
                     </a>
                     <a className="homeLink" href="https://goo.gl/maps/6tuzwygfyb8pg6fFA" target="_blank">
-                        <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
-                            <Google style={{ marginRight: "10px" }} />Google Maps
+                        <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center"}}>
+                            <Google style={{ marginRight: "10px" }} /><span className="linked">Google Maps</span>
                         </h4>
                     </a>
                     <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>

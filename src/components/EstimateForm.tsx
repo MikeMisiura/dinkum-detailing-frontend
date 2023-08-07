@@ -66,6 +66,10 @@ function EstimateForm() {
         if (pets) { newEstimatePrice += 10 };
         if (smoke) { newEstimatePrice += 10 };
 
+        if (leather === false){
+            setConditioner(false)
+        }
+
         setPrice(newEstimatePrice)
     }, [seats, leather, conditioner, pets, smoke])
     // --------Pricing----------
@@ -173,9 +177,7 @@ function EstimateForm() {
 
 
                 <Col>
-                    <Card className="cardEstimate">
-
-                        <Card.Body>
+                <div className="formEstimate">
 
                             <div className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></div>
                             <div className="cardAndExpire" style={{ marginTop: "1px" }}>
@@ -196,11 +198,14 @@ function EstimateForm() {
 
                                 <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
                                 <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                <div className="captchaStyle">
                                     <ReCAPTCHA
                                         sitekey={reCAPTCHAKey}
                                         size="invisible"
                                         ref={recaptchaRef}
+                                        className="grecaptcha-badge-estimate"
                                     />
+                                    </div>
                                     <Form.Control
                                         placeholder="Enter email"
                                         type="text"
@@ -224,8 +229,7 @@ function EstimateForm() {
                                     SUBMIT
                                 </div>
                             </Link>
-                        </Card.Body>
-                    </Card>
+                            </div>
                 </Col>
             </Row>
             {(() => {

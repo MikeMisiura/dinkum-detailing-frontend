@@ -20,7 +20,7 @@ function HomeComponent() {
 
             <Container className="center-content">
                 <Col xs="12" md='10' lg='8' xl='7'>
-                    <Carousel controls={false} interval={1000}>
+                    <Carousel controls={false} interval={3000}>
                         <Carousel.Item>
                             <Image
                                 src="/images/console-before-after.jpg"

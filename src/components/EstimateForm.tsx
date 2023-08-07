@@ -1,7 +1,7 @@
 import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -11,18 +11,21 @@ import { Check2, Calendar2Check } from 'react-bootstrap-icons';
 function EstimateForm() {
 
     // hooks
-    const [email, setEmail] = useState<string>("");
-    const [seats, setSeats] = useState<number>(5);
-    const [leather, setLeather] = useState<boolean>(false);
-    const [conditioner, setConditioner] = useState<boolean>(false);
-    const [pets, setPets] = useState<boolean>(false);
-    const [smoke, setSmoke] = useState<boolean>(false);
-    const [price, setPrice] = useState<number>(175);
     const [modalShow, setModalShow] = React.useState(false);
     const [valid, setValid] = useState(true);
     const [notValidEmail, setNotValidEmail] = useState(true);
 
-    let { createEstimate } = useContext(EstimateContext);
+    let { createEstimate,
+        email, setEmail,
+        seats, setSeats,
+        leather, setLeather,
+        conditioner, setConditioner,
+        pets, setPets,
+        smoke, setSmoke,
+        price, setPrice
+    } = useContext(EstimateContext);
+
+    const navigate = useNavigate();
 
     // reCAPTCHA
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
@@ -70,14 +73,16 @@ function EstimateForm() {
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
-        setModalShow(true)
-        setNotValidEmail(true)
+        console.log('hs')
 
         // reCAPTCHA
         let reCaptchaToken = await recaptchaRef.current?.executeAsync()
         recaptchaRef.current?.reset();
         if (!reCaptchaToken) { reCaptchaToken = "no token" }
         localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
+
+        setModalShow(true)
+        setNotValidEmail(true)
 
         let newEstimate: IEstimate = {
             email, seats, leather, conditioner,
@@ -173,17 +178,19 @@ function EstimateForm() {
                         <Card.Body>
 
                             <div className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></div>
-                            <Calendar2Check style={{ marginLeft: "5%" }} size={18} />
-                            <p className="review" style={{ marginTop: "1px" }}>
-                                {seats} Seats
-                                {seats === 5 && " or less"}
-                                {seats === 12 && " or more"}</p>
+                            <div className="cardAndExpire" style={{ marginTop: "1px" }}>
+                                <p>
+                                    {seats} Seats
+                                    {seats === 5 && " or less"}
+                                    {seats === 12 && " or more"}
+                                </p>
+                            </div>
                             <div className="cardAndExpire">
                                 {leather && <p>Leather <Check2 color="green" size={18} /></p>}
                             </div>
                             <div className="cardAndExpire"> {conditioner && leather && <p>Conditioned <Check2 color="green" size={18} /></p>}</div>
                             <div className="cardAndExpire">{pets && <p>Pets <Check2 color="green" size={18} /></p>}</div>
-                            <div className="cardAndExpire" style={{marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</div>
+                            <div className="cardAndExpire" style={{ marginBottom: "-30px" }}>{smoke === true && <p>Smoke <Check2 color="green" size={18} /></p>}</div>
 
                             <div className="emailEstimate">
 
@@ -222,15 +229,18 @@ function EstimateForm() {
                 </Col>
             </Row>
             {(() => {
-                    if (valid === false && validateEmail(email) === true) {
-                        return (
-                            <MessageSent
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
-                            />
-                        )
-                    }
-                })()}
+                if (valid === false && validateEmail(email) === true) {
+                    return (
+                        <MessageSent
+                            show={modalShow}
+                            onHide={() => {
+                                setModalShow(false)
+                                navigate("/schedule")
+                            }}
+                        />
+                    )
+                }
+            })()}
         </div>
     )
 };

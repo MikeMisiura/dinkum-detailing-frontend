@@ -2,9 +2,19 @@ import axios from "axios";
 import { IEstimate } from "../@types/estimate";
 import EstimateContext from "./EstimateContext";
 import { backendUrl } from "../environmentVariableTypes";
+import { useState } from "react";
 
 
 export function EstimateProvider({ children }: any) {
+
+    const [email, setEmail] = useState<string>("");
+    const [seats, setSeats] = useState<number>(5);
+    const [leather, setLeather] = useState<boolean>(false);
+    const [conditioner, setConditioner] = useState<boolean>(false);
+    const [pets, setPets] = useState<boolean>(false);
+    const [smoke, setSmoke] = useState<boolean>(false);
+    const [price, setPrice] = useState<number>(175);
+    
 
     const baseUrl: string = backendUrl + "api/estimate/"
 
@@ -13,7 +23,10 @@ export function EstimateProvider({ children }: any) {
             reCAPTCHA: `reCAPTCHA ${localStorage.getItem('reCAPTCHAToken')}`
         };
 
-        console.log(baseUrl)
+        if (Estimate.email) {setEmail(Estimate.email)}
+
+        console.log(Estimate.email)
+        console.log(email)
 
         return axios.post(baseUrl, Estimate, { headers: myHeaders })
             .then(response => {
@@ -26,7 +39,14 @@ export function EstimateProvider({ children }: any) {
 
     return (
         <EstimateContext.Provider value={{
-            createEstimate
+            createEstimate,
+            email, setEmail,
+            seats, setSeats,
+            leather, setLeather,
+            conditioner, setConditioner,
+            pets, setPets,
+            smoke, setSmoke,
+            price, setPrice
         }}>
             {children}
         </EstimateContext.Provider>

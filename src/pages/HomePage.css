@@ -1,9 +1,15 @@
-.cardHome{
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+.buttonFooter {
+    position: fixed;
+    right: 80px;
+    bottom: 100px;
 }
 
-.cardHome:hover{
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+.heading {
+    text-align: center;
+    font-family: "rubik";
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 75px;
+    margin-bottom: 0px;
+    color: #E1DCD9;
+    background-color: #3888CB;
 }

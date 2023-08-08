@@ -1,21 +1,21 @@
-.cardAndExpire{
+.review{
      margin:5%;
      margin-bottom: -10px;
    }
    
-   .heading1{
+   .headingEstimate{
        margin:5%;
    font-size: 25px;
    font-family: "Rubik";
    }
    
-   .heading2{
+   .bodyEstimate{
        margin:5%;
    font-size: 20px;
    font-family: "Rubik";
    }
    
-   .payment{
+   .emailEstimate{
      background-color: #f0edeb;
      padding:3px;
      margin-top: 15%;
@@ -32,8 +32,14 @@
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
 }
+.formEstimate{
+  padding: 10%;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  border-radius: 4px;
+  background-color: white;
+}
 
-.card:hover{
+.cardEstimate:hover{
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
@@ -43,11 +49,11 @@
   }
 
   .grecaptcha-badge {
-    width: 70px !important;
     overflow: hidden !important;
     transition: all 0.3s ease !important;
-    right: -22% !important;
+    top: 10% !important;
   }
+  
   .grecaptcha-badge:hover {
     width: 256px !important;
   }

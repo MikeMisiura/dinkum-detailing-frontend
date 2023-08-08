@@ -1,4 +1,4 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState, useRef } from 'react';
 import { IMessage } from '../@types/message';
@@ -17,8 +17,8 @@ function ContactForm() {
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
     const recaptchaRef = useRef<ReCAPTCHA>(null)
 
-    let companyPhoneNumber: string = "(763) 123-1234"
-    let companyEmail: string = "dinkum@change.me"
+    let companyPhoneNumber: string = "(320) 496-6010"
+    let companyEmail: string = "dinkumdetailing@gmail.com"
 
     let { createMessage } = useContext(MessageContext);
 
@@ -92,7 +92,6 @@ function ContactForm() {
     return (
         <div className="ContactContainer" >
             <Form onSubmit={handleSubmit} className='ContactForm'>
-                {/* under footer, needs fixed */}
                 <ReCAPTCHA
                     sitekey={reCAPTCHAKey}
                     size="invisible"
@@ -151,7 +150,7 @@ function ContactForm() {
 
                 </div>
                 <div className="d-grid gap-2 mt-3">
-                <Button onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
+                <Button style={{backgroundColor: "#3888CB"}} onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
                 </div>
                 </div>
             </Form>

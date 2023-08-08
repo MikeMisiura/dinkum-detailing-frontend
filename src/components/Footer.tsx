@@ -42,12 +42,12 @@ function Footer() {
                     </Col>
                     <Col sm="1" />
                     <Col sm="4">
-                        <Button color={DinkumColors.grey} size="lg" className="me-4" href="/estimate">
+                        <Button  size="lg" className="me-4 myButton" style={{ boxShadow: "none", backgroundColor: "#3888CB", borderColor: "#3888CB" }} href="/estimate">
                             Get a <strong>FREE</strong> Estimate Now
                         </Button>
                     </Col>
-                    <Col sm="2">
-                        <Nav className="me-4 flex-column " >
+                    <Col sm="3">
+                        <Nav className="me-4 flex-column">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/about-us">About Us</Nav.Link>
                             <Nav.Link href="/contact-us">Contact Us</Nav.Link>
@@ -59,12 +59,12 @@ function Footer() {
             <Navbar
                 style={{
                     backgroundColor: DinkumColors.lightBlue,
-                    color: DinkumColors.black
+                    color: DinkumColors.white
                 }}
                 className='px-auto'
             >
                 <Container className='d-flex justify-content-center'>
-                    Copyright 2023 Dinkum Detailing | Created by
+                © Copyright 2023 Dinkum Detailing | Created by
                     <a className='hidden-links px-1' href='https://www.linkedin.com/in/mike-misiura/'>
                         Mike Misiura
                     </a>

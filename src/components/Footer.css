@@ -1,4 +1,8 @@
 .hidden-links {
-    text-decoration: none;
-    color: inherit;
-  }
+  text-decoration: none;
+  color: inherit;
+}
+
+.nowrap {
+  white-space: nowrap
+}

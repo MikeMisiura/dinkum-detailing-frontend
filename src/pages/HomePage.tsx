@@ -8,9 +8,9 @@ function Home() {
 
     return (
         <>
-        <div className="buttonFooter">
+        {/* <div className="buttonFooter">
         <ButtonFooter/>
-        </div>
+        </div> */}
         <HomeComponent/>
         </>
     )

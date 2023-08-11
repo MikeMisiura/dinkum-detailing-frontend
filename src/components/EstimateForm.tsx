@@ -11,8 +11,6 @@ import { Check2, Calendar2Check } from 'react-bootstrap-icons';
 function EstimateForm() {
 
     // hooks
-    const [modalShow, setModalShow] = React.useState(false);
-    const [valid, setValid] = useState(true);
     const [notValidEmail, setNotValidEmail] = useState(true);
 
     let { createEstimate,
@@ -34,25 +32,6 @@ function EstimateForm() {
     function validateEmail(email: string) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
-    }
-
-    function MessageSent(props: any) {
-        return (
-            <Modal
-                {...props}
-                size="md"
-                centered
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton onClick={() => setValid(true)}>
-                    <Modal.Title>
-                        Your Estimate has been Locked In!
-                        <h6>Check your email for more info!</h6>
-                    </Modal.Title>
-                </Modal.Header>
-            </Modal>
-        );
     }
 
     // --------Pricing----------
@@ -83,7 +62,6 @@ function EstimateForm() {
         if (!reCaptchaToken) { reCaptchaToken = "no token" }
         localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
 
-        setModalShow(true)
         setNotValidEmail(true)
 
         let newEstimate: IEstimate = {
@@ -94,7 +72,6 @@ function EstimateForm() {
         createEstimate(newEstimate).then(() => {
             // reCAPTCHA
             localStorage.setItem('reCAPTCHAToken', '')
-            setValid(false)
             navigate("/schedule")
         }).catch((error: any) => {
             console.log(error);

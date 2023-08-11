@@ -4,7 +4,7 @@ import { backendUrl } from "../environmentVariableTypes";
 
 export function UserProvider({ children }: any) {
 
-    const baseUrl: string = backendUrl + "api/user/"
+    const baseUrl: string = backendUrl + "api/users/"
 
     function createUser(email: any) {
         let user = { email };
@@ -18,9 +18,10 @@ export function UserProvider({ children }: any) {
 
     function emailUser(email: any) {
         let user = { email };
-        console.log(user)
+
         return axios.post(`${baseUrl}`, user.email)
             .then(response => {
+                localStorage.setItem('userId', response.data.user.userId)
                 return new Promise(resolve => resolve(response.data));
             }
             );
@@ -31,7 +32,6 @@ export function UserProvider({ children }: any) {
 
         console.log(token)
         localStorage.setItem('myAuthToken', token)
-
     }
 
     return (

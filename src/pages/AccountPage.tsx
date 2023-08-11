@@ -1,10 +1,10 @@
-import LogInForm from "../components/LogIn";
+import Account from "../components/Account";
 
 function Login() {
 
     return (
         <>
-        <LogInForm/>
+        <Account/>
         </>
     )
 }

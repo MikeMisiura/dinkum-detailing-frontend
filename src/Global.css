@@ -9,6 +9,9 @@
     justify-content: center;
 }
 
+.center {
+    text-align: center
+}
 
 .heading {
     text-align: center;

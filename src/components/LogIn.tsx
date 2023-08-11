@@ -49,6 +49,7 @@ function LogInForm() {
 
         emailUser(newEmail).then(() => {
             setValid(false)
+            localStorage.removeItem('myAuthToken')
         }).catch((error: any) => {
             console.log(error);
             setNotValid(false)

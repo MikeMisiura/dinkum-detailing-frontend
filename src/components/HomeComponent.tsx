@@ -15,35 +15,70 @@ function HomeComponent() {
                 className="align-top"
                 style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
             />
-            <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "100px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
+            <div className='d-xs-block d-md-none' >
+                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "70px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
+            </div>
+            <div className=' d-none d-md-block' >
+                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "100px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
+            </div>
+
             <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "30px", textShadow: "1px 2px 3px #000000", marginBottom: "40px" }}>MOBILE INTERIOR DETAILING BUSINESS</h1>
 
+            <div className='d-xs-block d-md-none' >
             <Container className="center-content">
                 <Col xs="12" md='10' lg='8' xl='7'>
-                    <Card className="cardHome" style={{width: "150%",  right: "25%"}}>
-                    <Carousel controls={false} interval={3000}>
-                        <Carousel.Item>
-                            <Image
-                                src="/images/console-before-after.jpg"
-                                fluid
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <Image
-                                src="/images/we-come-to-you.jpg"
-                                fluid
-                            />
-                        </Carousel.Item>
-                    </Carousel>
+                    <Card className="cardHome" style={{ width: "110%", right: "4%" }}>
+                        <Carousel controls={false} interval={3000}>
+                            <Carousel.Item>
+                                <Image
+                                    src="/images/console-before-after.jpg"
+                                    fluid
+                                />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Image
+                                    src="/images/we-come-to-you.jpg"
+                                    fluid
+                                />
+                            </Carousel.Item>
+                        </Carousel>
                     </Card>
                 </Col>
             </Container>
+            </div>
+            <div className='d-none d-md-block' >
+                <Container className="center-content">
+                    <Col xs="12" md='10' lg='8' xl='7'>
+                        <Card className="cardHome" style={{ width: "150%", right: "25%" }}>
+                            <Carousel controls={false} interval={3000}>
+                                <Carousel.Item>
+                                    <Image
+                                        src="/images/console-before-after.jpg"
+                                        fluid
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <Image
+                                        src="/images/we-come-to-you.jpg"
+                                        fluid
+                                    />
+                                </Carousel.Item>
+                            </Carousel>
+                        </Card>
+                    </Col>
+                </Container>
+            </div>
+
+
 
             <br />
 
-            <h1 className="homeTitle">
-                SERVICES
-            </h1>
+            <div className='d-xs-block d-md-none' >
+                <h1 className="homeTitle" style={{ fontSize: "50px" }}>SERVICES</h1>
+            </div>
+            <div className='d-none d-md-block' >
+                <h1 className="homeTitle">SERVICES</h1>
+            </div>
 
             <Container className="center-content">
                 <Row className="center-content">
@@ -61,7 +96,7 @@ function HomeComponent() {
                     </Col>
 
                     <Col xs="12" sm="12" md="12" lg="4" className="my-2">
-                        <Card >
+                        <Card className="cardHome">
                             <Card.Img variant="top" src="/images/services/boat.jpg" />
                             <Card.Body>
                                 <Card.Title>Boat Interior</Card.Title>
@@ -74,7 +109,7 @@ function HomeComponent() {
                     </Col>
 
                     <Col xs="12" sm="12" md="12" lg="4" className="my-2">
-                        <Card >
+                        <Card className="cardHome">
                             <Card.Img variant="top" src="/images/services/shampoo.jpg" />
                             <Card.Body>
                                 <Card.Title>Shampooing</Card.Title>
@@ -91,9 +126,13 @@ function HomeComponent() {
 
             <br />
 
-            <h1 className="homeTitle" >
-                INTERESTED?
-            </h1>
+            <div className='d-xs-block d-md-none' >
+                <h1 className="homeTitle" style={{ fontSize: "50px" }}>INTERESTED?</h1>
+            </div>
+            <div className='d-none d-md-block' >
+                <h1 className="homeTitle">INTERESTED?</h1>
+            </div>
+
             <div style={{ textAlign: "center" }}>
                 <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Get an Estimate</Button>
             </div>
@@ -120,7 +159,7 @@ function HomeComponent() {
                         </h4>
                     </a>
                     <a className="homeLink" href="https://goo.gl/maps/6tuzwygfyb8pg6fFA" target="_blank">
-                        <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center"}}>
+                        <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
                             <Google style={{ marginRight: "10px" }} /><span className="linked">Google Maps</span>
                         </h4>
                     </a>

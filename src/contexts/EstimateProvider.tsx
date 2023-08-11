@@ -2,7 +2,7 @@ import axios from "axios";
 import { IEstimate } from "../@types/estimate";
 import EstimateContext from "./EstimateContext";
 import { backendUrl } from "../environmentVariableTypes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export function EstimateProvider({ children }: any) {
@@ -15,8 +15,19 @@ export function EstimateProvider({ children }: any) {
     const [smoke, setSmoke] = useState<boolean>(false);
     const [price, setPrice] = useState<number>(175);
     
-
+    const [estimate, setEstimate] = useState([]);
     const baseUrl: string = backendUrl + "api/estimate/"
+
+    useEffect(() => {
+        async function fetchData() {
+            await getAllEstimates();
+        }
+        fetchData();
+    }, []);
+
+    function getAllEstimates() {
+        return axios.get(baseUrl).then(response => setEstimate(response.data));
+    }
 
     function createEstimate(Estimate: IEstimate) {
         let myHeaders = {
@@ -40,6 +51,8 @@ export function EstimateProvider({ children }: any) {
     return (
         <EstimateContext.Provider value={{
             createEstimate,
+            getAllEstimates,
+            estimate,
             email, setEmail,
             seats, setSeats,
             leather, setLeather,

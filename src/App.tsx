@@ -14,6 +14,7 @@ import EstimatePage from './pages/EstimatePage';
 import Footer from './components/Footer';
 import { EstimateProvider } from './contexts/EstimateProvider';
 import SchedulePage from './pages/SchedulePage';
+import AccountPage from './pages/AccountPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                     <Route path='/contact-us' element={<ContactUs />} />
                     <Route path='/estimate' element={<EstimatePage />} />
                     <Route path='/schedule' element={<SchedulePage />} />
+                    <Route path='/account' element={<AccountPage />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/login/token/:token' element={<LoginToken />} />
                   </Routes>

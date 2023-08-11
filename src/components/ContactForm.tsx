@@ -1,4 +1,4 @@
-import { Button, Card, Modal } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState, useRef } from 'react';
 import { IMessage } from '../@types/message';

@@ -1,12 +1,12 @@
-import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
 import ReCAPTCHA from 'react-google-recaptcha';
 import "./EstimateForm.css"
-import { Check2, Calendar2Check } from 'react-bootstrap-icons';
+import { Check2 } from 'react-bootstrap-icons';
 
 function EstimateForm() {
 

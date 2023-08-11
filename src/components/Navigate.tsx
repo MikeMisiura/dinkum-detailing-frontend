@@ -1,6 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { Button, Col, Container, Image, NavDropdown } from 'react-bootstrap';
+import { Button, Col, Container, Image } from 'react-bootstrap';
 import DinkumColors from '../theme/dinkumColors';
 import { useEffect, useState } from 'react';
 

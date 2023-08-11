@@ -99,7 +99,7 @@ function ContactForm() {
                 />
                 
                 <div className="FormContent">
-                    <h3 className="FormTitle">CONTACT US</h3>
+                    <h3 className="ContactTitle">CONTACT US</h3>
                     <h5 style={{textAlign: "center"}}>Thanks for your interest in our services!</h5>
                     <h5 style={{textAlign: "center"}}>Feel free to call us at {companyPhoneNumber}, email us at {companyEmail}, or fill out the form below.</h5>
                 <div className="mt-3">

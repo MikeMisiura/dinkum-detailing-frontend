@@ -77,8 +77,6 @@ function EstimateForm() {
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
-        console.log('hs')
-
         // reCAPTCHA
         let reCaptchaToken = await recaptchaRef.current?.executeAsync()
         recaptchaRef.current?.reset();
@@ -97,6 +95,7 @@ function EstimateForm() {
             // reCAPTCHA
             localStorage.setItem('reCAPTCHAToken', '')
             setValid(false)
+            navigate("/schedule")
         }).catch((error: any) => {
             console.log(error);
             if (email === "" || validateEmail(email) === false) {
@@ -197,7 +196,7 @@ function EstimateForm() {
                             <div className="emailEstimate">
 
                                 <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
-                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days and book your appointment.</Form.Label>
                                 <div className="captchaStyle">
                                     <ReCAPTCHA
                                         sitekey={reCAPTCHAKey}
@@ -226,25 +225,12 @@ function EstimateForm() {
                             </div>
                             <Link className="purchaseLink" onClick={handleSubmit} style={{ textDecoration: "none" }} to={''}>
                                 <div className="cardFooter text-center">
-                                    SUBMIT
+                                    BOOK A DATE
                                 </div>
                             </Link>
                             </div>
                 </Col>
             </Row>
-            {(() => {
-                if (valid === false && validateEmail(email) === true) {
-                    return (
-                        <MessageSent
-                            show={modalShow}
-                            onHide={() => {
-                                setModalShow(false)
-                                navigate("/schedule")
-                            }}
-                        />
-                    )
-                }
-            })()}
         </div>
     )
 };

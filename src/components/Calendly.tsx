@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { InlineWidget } from 'react-calendly'
 import EstimateContext from '../contexts/EstimateContext';
+import { Button } from 'react-bootstrap';
 
 function Calendly() {
 
@@ -38,9 +39,14 @@ function Calendly() {
                     customAnswers: { a1, a2, a3, a4, a5 }
                 }}
                 styles={{
-                    height: '1000px'
+                    height: '1000px',
+                    margin: "-50px",
+                    marginBottom: "-200px"
                 }}
             />
+            <div style={{ textAlign: "center" }}>
+                <Button className="myButton" href="/" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%", margin: "-40px" }}>Back to Home</Button>
+            </div>
         </div>
     );
 }

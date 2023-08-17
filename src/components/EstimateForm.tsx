@@ -1,18 +1,16 @@
-import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import EstimateContext from '../contexts/EstimateContext';
 import { IEstimate } from '../@types/estimate';
 import ReCAPTCHA from 'react-google-recaptcha';
 import "./EstimateForm.css"
-import { Check2, Calendar2Check } from 'react-bootstrap-icons';
+import { Check2 } from 'react-bootstrap-icons';
 
 function EstimateForm() {
 
     // hooks
-    const [modalShow, setModalShow] = React.useState(false);
-    const [valid, setValid] = useState(true);
     const [notValidEmail, setNotValidEmail] = useState(true);
 
     let { createEstimate,
@@ -34,25 +32,6 @@ function EstimateForm() {
     function validateEmail(email: string) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
-    }
-
-    function MessageSent(props: any) {
-        return (
-            <Modal
-                {...props}
-                size="md"
-                centered
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton onClick={() => setValid(true)}>
-                    <Modal.Title>
-                        Your Estimate has been Locked In!
-                        <h6>Check your email for more info!</h6>
-                    </Modal.Title>
-                </Modal.Header>
-            </Modal>
-        );
     }
 
     // --------Pricing----------
@@ -77,15 +56,12 @@ function EstimateForm() {
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
-        console.log('hs')
-
         // reCAPTCHA
         let reCaptchaToken = await recaptchaRef.current?.executeAsync()
         recaptchaRef.current?.reset();
         if (!reCaptchaToken) { reCaptchaToken = "no token" }
         localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
 
-        setModalShow(true)
         setNotValidEmail(true)
 
         let newEstimate: IEstimate = {
@@ -96,7 +72,7 @@ function EstimateForm() {
         createEstimate(newEstimate).then(() => {
             // reCAPTCHA
             localStorage.setItem('reCAPTCHAToken', '')
-            setValid(false)
+            navigate("/schedule")
         }).catch((error: any) => {
             console.log(error);
             if (email === "" || validateEmail(email) === false) {
@@ -197,7 +173,7 @@ function EstimateForm() {
                             <div className="emailEstimate">
 
                                 <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
-                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days!</Form.Label>
+                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days and book your appointment.</Form.Label>
                                 <div className="captchaStyle">
                                     <ReCAPTCHA
                                         sitekey={reCAPTCHAKey}
@@ -226,25 +202,12 @@ function EstimateForm() {
                             </div>
                             <Link className="purchaseLink" onClick={handleSubmit} style={{ textDecoration: "none" }} to={''}>
                                 <div className="cardFooter text-center">
-                                    SUBMIT
+                                    BOOK A DATE
                                 </div>
                             </Link>
                             </div>
                 </Col>
             </Row>
-            {(() => {
-                if (valid === false && validateEmail(email) === true) {
-                    return (
-                        <MessageSent
-                            show={modalShow}
-                            onHide={() => {
-                                setModalShow(false)
-                                navigate("/schedule")
-                            }}
-                        />
-                    )
-                }
-            })()}
         </div>
     )
 };

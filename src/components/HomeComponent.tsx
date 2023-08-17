@@ -74,10 +74,10 @@ function HomeComponent() {
             <br />
 
             <div className='d-xs-block d-md-none' >
-                <h1 className="homeTitle" style={{ fontSize: "50px" }}>SERVICES</h1>
+                <h1 className="homeTitle" style={{ fontSize: "40px" }}>SERVICES</h1>
             </div>
             <div className='d-none d-md-block' >
-                <h1 className="homeTitle">SERVICES</h1>
+                <h1 className="homeTitle" style={{ fontSize: "50px" }}>SERVICES</h1>
             </div>
 
             <Container className="center-content">
@@ -127,21 +127,21 @@ function HomeComponent() {
             <br />
 
             <div className='d-xs-block d-md-none' >
-                <h1 className="homeTitle" style={{ fontSize: "50px" }}>INTERESTED?</h1>
+                <h1 className="homeTitle" style={{ fontSize: "40px" }}>INTERESTED?</h1>
             </div>
             <div className='d-none d-md-block' >
-                <h1 className="homeTitle">INTERESTED?</h1>
+                <h1 className="homeTitle" style={{ fontSize: "50px" }}>INTERESTED?</h1>
             </div>
 
             <div style={{ textAlign: "center" }}>
-                <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Get an Estimate</Button>
+                <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%" }}>Get an Estimate</Button>
             </div>
 
             <br />
 
             <Row style={{ backgroundColor: "white", padding: "20px" }}>
                 <Col>
-                    <h1 className="homeTitle">ABOUT US</h1>
+                    <h1 className="homeTitle" style={{ fontSize: "40px" }}>ABOUT US</h1>
 
                     <h4 className="homeMessage">
                         <ArrowRightCircle size={20} /> Specialize in the interiors of cars and watercraft
@@ -152,7 +152,7 @@ function HomeComponent() {
                     <Button className="myButton" href="/about-us" style={{ display: "flex", justifyContent: "center", backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Learn More</Button>
                 </Col>
                 <Col>
-                    <h1 className="homeTitle">FIND US</h1>
+                    <h1 className="homeTitle" style={{ fontSize: "40px" }}>FIND US</h1>
                     <a className="homeLink" href="https://www.facebook.com/dinkumdetailing" target="_blank">
                         <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
                             <Facebook style={{ marginRight: "10px" }} /><span className="linked">Facebook</span>

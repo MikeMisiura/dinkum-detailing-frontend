@@ -1,5 +1,5 @@
 .containerBody {
-  min-height: calc(100vh - 61px - 217px);
+  min-height: calc(100vh - 56px - 192px);
   display: flex;
   flex-direction: column;
 }

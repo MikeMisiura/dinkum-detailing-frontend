@@ -2,7 +2,6 @@ import { Button, Card } from 'react-bootstrap';
 import MessageContext from '../contexts/MessageContext';
 import EstimateContext from '../contexts/EstimateContext';
 import "./Account.css"
-import { useEffect } from 'react';
 import { Check2 } from 'react-bootstrap-icons';
 
 function Account() {

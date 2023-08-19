@@ -89,12 +89,14 @@ function Footer() {
                 <Container className='center-content'>
                     <Col>
                         <p className='center'>
-                            © Copyright 2023 Dinkum Detailing | Created by
+                            © Copyright 2023 Dinkum Detailing LLC | Created by
                             <a className='hidden-links px-1 nowrap' href='https://www.linkedin.com/in/mike-misiura/'>
                                 Mike Misiura
                             </a>
                             and
-                            <a className='hidden-links px-1 nowrap' href='https://www.linkedin.com/in/mike-misiura/'>
+                            <a className='hidden-links px-1 nowrap' 
+                                // href='https://www.linkedin.com/in/mike-misiura/'
+                            >
                                 Matt Slater
                             </a>
                         </p>

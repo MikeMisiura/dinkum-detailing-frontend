@@ -1,4 +1,4 @@
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -45,7 +45,7 @@ function EstimateForm() {
         if (pets) { newEstimatePrice += 10 };
         if (smoke) { newEstimatePrice += 10 };
 
-        if (leather === false){
+        if (leather === false) {
             setConditioner(false)
         }
 
@@ -83,77 +83,78 @@ function EstimateForm() {
 
     return (
         <div>
-            <Row>
+            <Container>
+                <Row>
 
 
 
-                <Col className="col-sm-8">
+                    <Col sm='12' md='7' xl='8'>
 
-                    <Card className="cardEstimate">
-
-
-                        <h1 className="FormTitle">ESTIMATE</h1>
-                        <Form.Label>Number of Seats</Form.Label>
-                        <Form.Range
-                            name="seats"
-                            value={seats}
-                            onChange={e => setSeats(parseInt(e.target.value))}
-                            min="5"
-                            max="12"
-                        />
-                        <Form.Label>
-                            {seats}
-                            {seats === 5 && " or less"}
-                            {seats === 12 && " or more"}
-                        </Form.Label>
-
-                        <Form.Check
-                            type="switch"
-                            label="Does you vehicle have Leather Seats?"
-                            name="leather"
-                            checked={leather}
-                            onChange={e => setLeather(e.target.checked)}
-                            as="input"
-                        />
-
-                        <Form.Check
-                            disabled={!leather}
-                            type="switch"
-                            label="Do you want your Leather Seats Conditioned?"
-                            name="conditioner"
-                            checked={conditioner}
-                            onChange={e => setConditioner(e.target.checked)}
-                            as="input"
-                        />
-
-                        <Form.Check
-                            type="switch"
-                            label="Are pets regularly in the vehicle?"
-                            name="pets"
-                            checked={pets}
-                            onChange={e => setPets(e.target.checked)}
-                            as="input"
-                        />
-
-                        <Form.Check
-                            type="switch"
-                            label="Do you smoke in the vehicle?"
-                            name="smoke"
-                            checked={smoke}
-                            onChange={e => setSmoke(e.target.checked)}
-                            as="input"
-                        />
-                        {smoke && <p>Due to the pervasiveness of smoke, we may not get all of the smoke smell out of your vehicle.</p>}
+                        <Card className="cardEstimate">
 
 
+                            <h1 className="FormTitle">ESTIMATE</h1>
+                            <Form.Label>Number of Seats</Form.Label>
+                            <Form.Range
+                                name="seats"
+                                value={seats}
+                                onChange={e => setSeats(parseInt(e.target.value))}
+                                min="5"
+                                max="12"
+                            />
+                            <Form.Label>
+                                {seats}
+                                {seats === 5 && " or less"}
+                                {seats === 12 && " or more"}
+                            </Form.Label>
 
-                    </Card>
-                </Col>
+                            <Form.Check
+                                type="switch"
+                                label="Does you vehicle have Leather Seats?"
+                                name="leather"
+                                checked={leather}
+                                onChange={e => setLeather(e.target.checked)}
+                                as="input"
+                            />
+
+                            <Form.Check
+                                disabled={!leather}
+                                type="switch"
+                                label="Do you want your Leather Seats Conditioned?"
+                                name="conditioner"
+                                checked={conditioner}
+                                onChange={e => setConditioner(e.target.checked)}
+                                as="input"
+                            />
+
+                            <Form.Check
+                                type="switch"
+                                label="Are pets regularly in the vehicle?"
+                                name="pets"
+                                checked={pets}
+                                onChange={e => setPets(e.target.checked)}
+                                as="input"
+                            />
+
+                            <Form.Check
+                                type="switch"
+                                label="Do you smoke in the vehicle?"
+                                name="smoke"
+                                checked={smoke}
+                                onChange={e => setSmoke(e.target.checked)}
+                                as="input"
+                            />
+                            {smoke && <p>Due to the pervasiveness of smoke, we may not get all of the smoke smell out of your vehicle.</p>}
 
 
 
-                <Col>
-                <div className="formEstimate">
+                        </Card>
+                    </Col>
+
+
+
+                    <Col sm='12' md='5' xl='4'>
+                        <Card className="formEstimate">
 
                             <div className="heading1"><strong><h4>TOTAL ESTIMATE: ${price}</h4></strong></div>
                             <div className="cardAndExpire" style={{ marginTop: "1px" }}>
@@ -173,15 +174,8 @@ function EstimateForm() {
                             <div className="emailEstimate">
 
                                 <p className="bodyEstimate"><strong>LOCK IN YOUR ESTIMATE</strong></p>
-                                <Form className="review"><Form.Label>Enter your Email to lock in your estimate for 90 days and book your appointment.</Form.Label>
-                                <div className="captchaStyle">
-                                    <ReCAPTCHA
-                                        sitekey={reCAPTCHAKey}
-                                        size="invisible"
-                                        ref={recaptchaRef}
-                                        className="grecaptcha-badge-estimate"
-                                    />
-                                    </div>
+                                <Form className="review">
+                                    <Form.Label>Enter your Email to lock in your estimate for 90 days and book your appointment.</Form.Label>
                                     <Form.Control
                                         placeholder="Enter email"
                                         type="text"
@@ -205,9 +199,20 @@ function EstimateForm() {
                                     BOOK A DATE
                                 </div>
                             </Link>
-                            </div>
-                </Col>
-            </Row>
+                        </Card>
+                    </Col>
+                    <div className="captchaStyle">
+                        <ReCAPTCHA
+                            sitekey={reCAPTCHAKey}
+                            size="invisible"
+                            ref={recaptchaRef}
+                            className="grecaptcha-badge"
+                        />
+                    </div>
+
+                </Row>
+
+            </Container>
         </div>
     )
 };

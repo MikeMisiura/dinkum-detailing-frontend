@@ -32,6 +32,7 @@ function Calendly() {
 
     return (
         <div>
+            {/* <br /> */}
             <InlineWidget
                 url="https://calendly.com/mikemisiura"
                 prefill={{
@@ -39,9 +40,9 @@ function Calendly() {
                     customAnswers: { a1, a2, a3, a4, a5 }
                 }}
                 styles={{
-                    height: '1000px',
-                    margin: "-50px",
-                    marginBottom: "-200px"
+                    height: '650px',
+                    // margin: "-50px",
+                    // marginBottom: "-200px"
                 }}
             />
             <div style={{ textAlign: "center" }}>

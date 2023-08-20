@@ -1,59 +1,65 @@
-.review{
-     margin:5%;
-     margin-bottom: -10px;
-   }
-   
-   .headingEstimate{
-       margin:5%;
-   font-size: 25px;
-   font-family: "Rubik";
-   }
-   
-   .bodyEstimate{
-       margin:5%;
-   font-size: 20px;
-   font-family: "Rubik";
-   }
-   
-   .emailEstimate{
-     background-color: #f0edeb;
-     padding:3px;
-     margin-top: 15%;
-   }
-   
-   .cardFooter{
-   background-color: #3888CB;
-   color:white;
-   padding: 10px;
-   }
-
-   .cardEstimate{
-    padding: 5%;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+.review {
+  margin: 5%;
+  margin-bottom: -10px;
 }
-.formEstimate{
+
+.headingEstimate {
+  margin: 5%;
+  font-size: 25px;
+  font-family: "Rubik";
+}
+
+.bodyEstimate {
+  margin: 5%;
+  font-size: 20px;
+  font-family: "Rubik";
+}
+
+.emailEstimate {
+  background-color: #f0edeb;
+  padding: 3px;
+  margin-top: 15%;
+}
+
+.cardFooter {
+  background-color: #3888CB;
+  color: white;
+  padding: 10px;
+}
+
+.cardEstimate {
+  padding: 5%;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+.formEstimate {
   padding: 10%;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   border-radius: 4px;
   background-color: white;
 }
 
-.cardEstimate:hover{
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+.formEstimate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.cardEstimate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
 .requiredEstimate {
-    color: red;
-  }
+  color: red;
+}
 
-  .grecaptcha-badge {
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
-    top: 10% !important;
-  }
-  
-  .grecaptcha-badge:hover {
-    width: 256px !important;
-  }
+.grecaptcha-badge {
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  top: 10% !important;
+}
+
+.grecaptcha-badge:hover {
+  width: 256px !important;
+}

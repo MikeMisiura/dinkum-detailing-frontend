@@ -86,10 +86,13 @@ function HomeComponent() {
                         <Card className="cardHome">
                             <Card.Img variant="top" src="/images/services/basic.jpg" />
                             <Card.Body>
-                                <Card.Title>Premium Detailing <Badge bg="secondary">Most Popular</Badge></Card.Title>
+                                <Card.Title>Basic Detailing <Badge bg="secondary">Most Popular</Badge></Card.Title>
                                 <Card.Text>
-                                    A Premium Detail includes a detailed vacuuming of carpets and seats,
+                                    A Basic Detail includes a detailed vacuuming of carpets and seats,
                                     cleaning of all vinyl, plastic, windows, and leather.
+                                    <br />
+                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    and require an electric outlet within 50ft of your car.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -102,7 +105,10 @@ function HomeComponent() {
                                 <Card.Title>Boat Interior</Card.Title>
                                 <Card.Text>
                                     We will clean the interior of your watercraft. Seats, carpet,
-                                    cup holders and more. This service is priced the same as Premium Detailing.
+                                    cup holders and more. This service is priced the same as Basic Detailing.
+                                    <br />
+                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    and require an electric outlet within 50ft of your boat.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -115,8 +121,11 @@ function HomeComponent() {
                                 <Card.Title>Shampooing</Card.Title>
                                 <Card.Text>
                                     We shampoo all carpet and fabric. This is an add-on service, so it
-                                    must be scheduled after a Premium Detail service. Contact us for
+                                    must be scheduled after a Basic Detail service. Contact us for
                                     details.
+                                    <br />
+                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    and require an electric outlet and water spigot within 50ft of your car.
                                 </Card.Text>
                             </Card.Body>
                         </Card>

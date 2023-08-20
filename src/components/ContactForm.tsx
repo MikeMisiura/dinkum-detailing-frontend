@@ -78,12 +78,12 @@ function ContactForm() {
             if (email === "" && message === "") {
                 setnotValidEmail(false)
                 setnotValidMessage(false)
-            }else if (validateEmail(email) === false && message === "") {
+            } else if (validateEmail(email) === false && message === "") {
                 setnotValidEmail(false)
                 setnotValidMessage(false)
-            }else if (email === "" || validateEmail(email) === false ) {
+            } else if (email === "" || validateEmail(email) === false) {
                 setnotValidEmail(false)
-            }else{
+            } else {
                 setnotValidMessage(false)
             }
         });
@@ -97,61 +97,63 @@ function ContactForm() {
                     size="invisible"
                     ref={recaptchaRef}
                 />
-                
+
                 <div className="FormContent">
                     <h3 className="ContactTitle">CONTACT US</h3>
-                    <h5 style={{textAlign: "center"}}>Thanks for your interest in our services!</h5>
-                    <h5 style={{textAlign: "center"}}>Feel free to call us at {companyPhoneNumber}, email us at {companyEmail}, or fill out the form below.</h5>
-                <div className="mt-3">
-                <Form.Label>Email<span className="required">*</span></Form.Label>
-                <Form.Control
-                    placeholder="Enter email"
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-                {(() => {
-                    if (notValidEmail === false) {
-                        return (
-                            <Form.Label className="required">Please Enter a Valid Email</Form.Label>
-                            
-                        )
-                    }
-                })()}
+                    <h5 style={{ textAlign: "center" }}>Thanks for your interest in our services!</h5>
+                    <h5 style={{ textAlign: "center" }}>Feel free to call us at {companyPhoneNumber}, email us at {companyEmail}, or fill out the form below.</h5>
+                    <div className="mt-3">
+                        <Form.Label>Email<span className="required">*</span></Form.Label>
+                        <Form.Control
+                            placeholder="Enter email"
+                            type="text"
+                            name="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        {(() => {
+                            if (notValidEmail === false) {
+                                return (
+                                    <Form.Label className="required">Please Enter a Valid Email</Form.Label>
 
-                <br/>
+                                )
+                            }
+                        })()}
 
-                <Form.Label>Phone Number  </Form.Label>
-                <Form.Control
-                    placeholder="Enter Phone Number (Optional)"
-                    type="text"
-                    name="phone"
-                    value={phone}
-                    onChange={e => setPhone(e.target.value)}
-                />
+                        <br />
 
-                <Form.Label>Message<span className="required">*</span></Form.Label>
-                <Form.Control
-                    placeholder="Enter message"
-                    type="textarea"
-                    name="message"
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    as="textarea" rows={3}
-                />
-                {(() => {
-                    if (notValidMessage === false) {
-                        return (
-                            <Form.Label className="required">Please Enter a Valid Message</Form.Label>
-                        )
-                    }
-                })()}
+                        <Form.Label>Phone Number  </Form.Label>
+                        <Form.Control
+                            placeholder="Enter Phone Number (Optional)"
+                            type="text"
+                            name="phone"
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
+                        />
 
-                </div>
-                <div className="d-grid gap-2 mt-3">
-                <Button style={{backgroundColor: "#3888CB"}} onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
-                </div>
+                        <br />
+
+                        <Form.Label>Message<span className="required">*</span></Form.Label>
+                        <Form.Control
+                            placeholder="Enter message"
+                            type="textarea"
+                            name="message"
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
+                            as="textarea" rows={3}
+                        />
+                        {(() => {
+                            if (notValidMessage === false) {
+                                return (
+                                    <Form.Label className="required">Please Enter a Valid Message</Form.Label>
+                                )
+                            }
+                        })()}
+
+                    </div>
+                    <div className="d-grid gap-2 mt-3">
+                        <Button style={{ backgroundColor: "#3888CB" }} onClick={() => setModalShow(true)} type="submit">Contact Us!</Button>
+                    </div>
                 </div>
             </Form>
             <div>

@@ -15,19 +15,19 @@ export function EstimateProvider({ children }: any) {
     const [smoke, setSmoke] = useState<boolean>(false);
     const [price, setPrice] = useState<number>(175);
     
-    const [estimate, setEstimate] = useState([]);
+    // const [estimate, setEstimate] = useState([]);
     const baseUrl: string = backendUrl + "api/estimate/"
 
-    useEffect(() => {
-        async function fetchData() {
-            await getAllEstimates();
-        }
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         await getAllEstimates();
+    //     }
+    //     fetchData();
+    // }, []);
 
-    function getAllEstimates() {
-        return axios.get(baseUrl).then(response => setEstimate(response.data));
-    }
+    // function getAllEstimates() {
+    //     return axios.get(baseUrl).then(response => setEstimate(response.data));
+    // }
 
     function createEstimate(Estimate: IEstimate) {
         let myHeaders = {
@@ -35,9 +35,6 @@ export function EstimateProvider({ children }: any) {
         };
 
         if (Estimate.email) {setEmail(Estimate.email)}
-
-        console.log(Estimate.email)
-        console.log(email)
 
         return axios.post(baseUrl, Estimate, { headers: myHeaders })
             .then(response => {
@@ -51,8 +48,8 @@ export function EstimateProvider({ children }: any) {
     return (
         <EstimateContext.Provider value={{
             createEstimate,
-            getAllEstimates,
-            estimate,
+            // getAllEstimates,
+            // estimate,
             email, setEmail,
             seats, setSeats,
             leather, setLeather,

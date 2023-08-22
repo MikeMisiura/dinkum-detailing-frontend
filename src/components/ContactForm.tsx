@@ -44,7 +44,8 @@ function ContactForm() {
             >
                 <Modal.Header closeButton onClick={() => setValid(true)}>
                     <Modal.Title>
-                        Message Sent! Thanks for Contacting Us!
+                        Message Sent!
+                        <h6>Thanks for Contacting Us!</h6>
                     </Modal.Title>
                 </Modal.Header>
             </Modal>

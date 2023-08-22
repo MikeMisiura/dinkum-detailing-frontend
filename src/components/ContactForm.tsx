@@ -12,6 +12,7 @@ function ContactForm() {
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
     const [message, setMessage] = useState<string>("");
+    const [bot, setBot] = useState<boolean>(false);
 
     // reCAPTCHA
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
@@ -23,6 +24,7 @@ function ContactForm() {
     let { createMessage } = useContext(MessageContext);
 
     const [modalShow, setModalShow] = React.useState(false);
+    const [botModalShow, setBotModalShow] = React.useState(false);
 
     const [valid, setValid] = useState(true);
     const [notValidEmail, setnotValidEmail] = useState(true);
@@ -52,6 +54,31 @@ function ContactForm() {
         );
     }
 
+    function BotMessage (props: any) {
+        return (
+            <Modal
+                {...props}
+                size="md"
+                centered
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton onClick={() => setBot(false)}>
+                    <Modal.Title>
+                        Message Failed!
+                        <h6>
+                            reCAPTCHA thinks you are a bot. 
+                            If you are a human, please call or email us.
+                        </h6>
+                        <p>(320) 496-6010</p>
+                        <p>dinkumdetailing@gmail.com</p>
+                        <p>We apologize for the inconvenience.</p>
+                    </Modal.Title>
+                </Modal.Header>
+            </Modal>
+        );
+    }
+
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
@@ -75,10 +102,11 @@ function ContactForm() {
             // localStorage.setItem('reCAPTCHAToken', '')
             setValid(false)
         }).catch((error: any) => {
-            console.log(error);
-            console.log(error.response.status);
+            // console.log(error);
+            // console.log(error.response.status);
             
             if (error.response.status === 403) {
+                setBot(true)
                 console.log('we think you are a bot. If you are a human, please call or email us.');
             } else if (email === "" && message === "") {
                 setnotValidEmail(false)
@@ -162,12 +190,22 @@ function ContactForm() {
                 </div>
             </Form>
             <div>
-                {(() => {
+            {(() => {
                     if (valid === false && validateEmail(email) === true) {
                         return (
                             <MessageSent
                                 show={modalShow}
                                 onHide={() => setModalShow(false)}
+                            />
+                        )
+                    }
+                })()}
+                {(() => {
+                    if (bot) {
+                        return (
+                            <BotMessage
+                                show={botModalShow}
+                                onHide={() => setBotModalShow(false)}
                             />
                         )
                     }

@@ -15,6 +15,8 @@ function EstimateForm() {
     const [modalShow, setModalShow] = React.useState(false);
     const [valid, setValid] = useState(true);
     const [notValidEmail, setNotValidEmail] = useState(true);
+    const [bot, setBot] = useState<boolean>(false);
+    const [botModalShow, setBotModalShow] = React.useState(false);
 
     let { createEstimate,
         email, setEmail,
@@ -46,15 +48,41 @@ function EstimateForm() {
                 backdrop="static"
                 keyboard={false}
             >
-                <Modal.Header style={{justifyContent: "center", display: "flex", textAlign: "center"}} onClick={() => setValid(true)}>
+                <Modal.Header style={{ justifyContent: "center", display: "flex", textAlign: "center" }} onClick={() => setValid(true)}>
                     <Modal.Title>
                         Your Estimate has been Locked In!
                         <h6>Check your email for more info!</h6>
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Footer style={{justifyContent: "center", display: "flex"}}>
+                <Modal.Footer style={{ justifyContent: "center", display: "flex" }}>
                     <Button onClick={() => navigate("/schedule")}>Schedule!</Button>
                 </Modal.Footer>
+            </Modal>
+        );
+    }
+
+
+    function BotMessage(props: any) {
+        return (
+            <Modal
+                {...props}
+                size="md"
+                centered
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton onClick={() => setBot(false)}>
+                    <Modal.Title>
+                        Message Failed!
+                        <h6>
+                            reCAPTCHA thinks you are a bot.
+                            If you are a human, please call or email us.
+                        </h6>
+                        <p>(320) 496-6010</p>
+                        <p>dinkumdetailing@gmail.com</p>
+                        <p>We apologize for the inconvenience.</p>
+                    </Modal.Title>
+                </Modal.Header>
             </Modal>
         );
     }
@@ -101,7 +129,10 @@ function EstimateForm() {
             setValid(false)
         }).catch((error: any) => {
             console.log(error);
-            if (email === "" || validateEmail(email) === false) {
+            if (error.response.status === 403) {
+                setBot(true)
+                console.log('we think you are a bot. If you are a human, please call or email us.');
+            } else if (email === "" || validateEmail(email) === false) {
                 setNotValidEmail(false)
             }
         })
@@ -238,17 +269,41 @@ function EstimateForm() {
 
                 </Row>
                 {(() => {
-                if (valid === false && validateEmail(email) === true) {
-                    return (
-                        <MessageSent
-                            show={modalShow}
-                            onHide={() => {
-                                setModalShow(false)
-                            }}
-                        />
-                    )
-                }
-            })()}
+                    if (valid === false && validateEmail(email) === true) {
+                        return (
+                            <MessageSent
+                                show={modalShow}
+                                onHide={() => {
+                                    setModalShow(false)
+                                }}
+                            />
+                        )
+                    }
+                    {
+                        (() => {
+                            if (valid === false && validateEmail(email) === true) {
+                                return (
+                                    <BotMessage
+                                        show={botModalShow}
+                                        onHide={() => setBotModalShow(false)}
+                                    />
+                                )
+                            }
+                        })()
+                    }
+
+                })()}
+                {(() => {
+                    if (bot) {
+                        return (
+                            <BotMessage
+                                show={botModalShow}
+                                onHide={() => setBotModalShow(false)}
+                            />
+                        )
+                    }
+                })()}
+
             </Container>
         </div>
     )

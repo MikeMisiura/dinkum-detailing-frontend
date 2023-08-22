@@ -7,6 +7,19 @@ function HomeComponent() {
 
     return (
         <>
+            <div className='d-xs-block d-md-none' >
+            <img
+                alt="logo"
+                src='/images/logos/logo.png'
+                width="75"
+                height="75"
+                className="align-top"
+                style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+            />
+                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "50px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
+                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "20px", textShadow: "1px 2px 3px #000000", marginBottom: "40px" }}>MOBILE INTERIOR DETAILING BUSINESS</h1>
+            </div>
+            <div className=' d-none d-md-block' >
             <img
                 alt="logo"
                 src='/images/logos/logo.png'
@@ -15,36 +28,33 @@ function HomeComponent() {
                 className="align-top"
                 style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
             />
-            <div className='d-xs-block d-md-none' >
-                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "70px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
-            </div>
-            <div className=' d-none d-md-block' >
+
                 <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "100px", textShadow: "2px 2px 4px #000000" }}>DINKUM DETAILING</h1>
+                <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "30px", textShadow: "1px 2px 3px #000000", marginBottom: "40px" }}>MOBILE INTERIOR DETAILING BUSINESS</h1>
             </div>
 
-            <h1 style={{ textAlign: "center", fontFamily: 'Rubik', fontSize: "30px", textShadow: "1px 2px 3px #000000", marginBottom: "40px" }}>MOBILE INTERIOR DETAILING BUSINESS</h1>
 
             <div className='d-xs-block d-md-none' >
-            <Container className="center-content">
-                <Col xs="12" md='10' lg='8' xl='7'>
-                    <Card className="cardHome" style={{ width: "110%", right: "4%" }}>
-                        <Carousel controls={false} interval={3000}>
-                            <Carousel.Item>
-                                <Image
-                                    src="/images/console-before-after.jpg"
-                                    fluid
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <Image
-                                    src="/images/we-come-to-you.jpg"
-                                    fluid
-                                />
-                            </Carousel.Item>
-                        </Carousel>
-                    </Card>
-                </Col>
-            </Container>
+                <Container className="center-content">
+                    <Col xs="12" md='10' lg='8' xl='7'>
+                        <Card className="cardHome" style={{ width: "110%", right: "4%" }}>
+                            <Carousel controls={false} interval={3000}>
+                                <Carousel.Item>
+                                    <Image
+                                        src="/images/console-before-after.jpg"
+                                        fluid
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <Image
+                                        src="/images/we-come-to-you.jpg"
+                                        fluid
+                                    />
+                                </Carousel.Item>
+                            </Carousel>
+                        </Card>
+                    </Col>
+                </Container>
             </div>
             <div className='d-none d-md-block' >
                 <Container className="center-content">
@@ -91,7 +101,7 @@ function HomeComponent() {
                                     A Basic Detail includes a detailed vacuuming of carpets and seats,
                                     cleaning of all vinyl, plastic, windows, and leather.
                                     <br />
-                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    We come to you (within 20 miles of Princeton, MN,)
                                     and require an electric outlet within 50ft of your car.
                                 </Card.Text>
                             </Card.Body>
@@ -107,7 +117,7 @@ function HomeComponent() {
                                     We will clean the interior of your watercraft. Seats, carpet,
                                     cup holders and more. This service is priced the same as Basic Detailing.
                                     <br />
-                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    We come to you (within 20 miles of Princeton, MN,)
                                     and require an electric outlet within 50ft of your boat.
                                 </Card.Text>
                             </Card.Body>
@@ -124,7 +134,7 @@ function HomeComponent() {
                                     must be scheduled after a Basic Detail service. Contact us for
                                     details.
                                     <br />
-                                    We come to you (within 20 miles of Princeton, MN,) 
+                                    We come to you (within 20 miles of Princeton, MN,)
                                     and require an electric outlet and water spigot within 50ft of your car.
                                 </Card.Text>
                             </Card.Body>
@@ -143,10 +153,10 @@ function HomeComponent() {
             </div>
 
             <div className='d-xs-block d-md-none' style={{ textAlign: "center" }}>
-            <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Get an Estimate</Button>
+                <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Get an Estimate</Button>
             </div>
             <div className='d-none d-md-block' style={{ textAlign: "center" }} >
-            <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%" }}>Get an Estimate</Button>
+                <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%" }}>Get an Estimate</Button>
             </div>
 
             <br />

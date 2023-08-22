@@ -142,8 +142,11 @@ function HomeComponent() {
                 <h1 className="homeTitle" style={{ fontSize: "50px" }}>INTERESTED?</h1>
             </div>
 
-            <div style={{ textAlign: "center" }}>
-                <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%" }}>Get an Estimate</Button>
+            <div className='d-xs-block d-md-none' style={{ textAlign: "center" }}>
+            <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB" }}>Get an Estimate</Button>
+            </div>
+            <div className='d-none d-md-block' style={{ textAlign: "center" }} >
+            <Button className="myButton" href="/estimate" style={{ backgroundColor: "#3888CB", borderColor: "#3888CB", width: "20%" }}>Get an Estimate</Button>
             </div>
 
             <br />

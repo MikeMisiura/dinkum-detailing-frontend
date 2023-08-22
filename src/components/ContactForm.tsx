@@ -76,7 +76,11 @@ function ContactForm() {
             setValid(false)
         }).catch((error: any) => {
             console.log(error);
-            if (email === "" && message === "") {
+            console.log(error.response.status);
+            
+            if (error.response.status === 403) {
+                console.log('we think you are a bot. If you are a human, please call or email us.');
+            } else if (email === "" && message === "") {
                 setnotValidEmail(false)
                 setnotValidMessage(false)
             } else if (validateEmail(email) === false && message === "") {

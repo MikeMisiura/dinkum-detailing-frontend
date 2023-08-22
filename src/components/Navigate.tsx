@@ -18,17 +18,17 @@ function Navigate() {
         )
     }
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     
-    useEffect(() => {
-        const authToken = localStorage.getItem('myAuthToken');
-        setIsLoggedIn(!!authToken);
-    }, []);
+    // useEffect(() => {
+    //     const authToken = localStorage.getItem('myAuthToken');
+    //     setIsLoggedIn(!!authToken);
+    // }, []);
 
-    function logOut() {
-        localStorage.removeItem('myAuthToken');
-        localStorage.removeItem('userId');
-    }
+    // function logOut() {
+    //     localStorage.removeItem('myAuthToken');
+    //     localStorage.removeItem('userId');
+    // }
 
     return (
         <Navbar
@@ -72,22 +72,22 @@ function Navigate() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
-                    {isLoggedIn ?
+                    {/* {isLoggedIn ? */}
                         <>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/about-us">About</Nav.Link>
                             <Nav.Link href="/contact-us">Contact Us</Nav.Link>
-                            <Nav.Link href="/account">Account</Nav.Link>
-                            <Nav.Link onClick={logOut} href="/login">Log Out</Nav.Link>
+                            {/* <Nav.Link href="/account">Account</Nav.Link> */}
+                            {/* <Nav.Link onClick={logOut} href="/login">Log Out</Nav.Link> */}
                         </>
-                        :
+                        {/* :
                         <>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/about-us">About</Nav.Link>
                             <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                             <Nav.Link href="/login">Login</Nav.Link>
-                        </>
-                    }
+                        </> */}
+                    {/* } */}
                 </Nav>
                 </Navbar.Collapse>
                 </Col>

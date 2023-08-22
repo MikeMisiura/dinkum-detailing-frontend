@@ -5,22 +5,22 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/HomePage';
 import About from './pages/AboutPage';
 import ContactUs from './pages/ContactUsPage';
-import Login from './pages/LogInPage';
+// import Login from './pages/LogInPage';
 import { MessageProvider } from './contexts/MessageProvider';
 import DinkumColors from './theme/dinkumColors';
-import { UserProvider } from './contexts/UserProvider';
-import LoginToken from './components/LoginToken';
+// import { UserProvider } from './contexts/UserProvider';
+// import LoginToken from './components/LoginToken';
 import EstimatePage from './pages/EstimatePage';
 import Footer from './components/Footer';
 import { EstimateProvider } from './contexts/EstimateProvider';
 import SchedulePage from './pages/SchedulePage';
-import AccountPage from './pages/AccountPage';
+// import AccountPage from './pages/AccountPage';
 import NotFound from './pages/NotFound';
 
 function App() {
   return (
     
-    <UserProvider>
+    // <UserProvider>
       <MessageProvider>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></link>
         <EstimateProvider>
@@ -41,9 +41,9 @@ function App() {
                     <Route path='/contact-us' element={<ContactUs />} />
                     <Route path='/estimate' element={<EstimatePage />} />
                     <Route path='/schedule' element={<SchedulePage />} />
-                    <Route path='/account' element={<AccountPage />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/login/token/:token' element={<LoginToken />} />
+                    {/* <Route path='/account' element={<AccountPage />} /> */}
+                    {/* <Route path='/login' element={<Login />} /> */}
+                    {/* <Route path='/login/token/:token' element={<LoginToken />} /> */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </BrowserRouter>
@@ -56,7 +56,7 @@ function App() {
           </div>
         </EstimateProvider>
       </MessageProvider>
-    </UserProvider>
+    // </UserProvider>
   );
 }
 

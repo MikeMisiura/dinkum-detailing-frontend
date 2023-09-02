@@ -175,12 +175,12 @@ function HomeComponent() {
                 </Col>
                 <Col>
                     <h1 className="homeTitle" style={{ fontSize: "40px" }}>FIND US</h1>
-                    <a className="homeLink" href="https://www.facebook.com/dinkumdetailing" target="_blank">
+                    <a className="homeLink" href="https://www.facebook.com/dinkumdetailing" rel="noreferrer" target="_blank">
                         <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
                             <Facebook style={{ marginRight: "10px" }} /><span className="linked">Facebook</span>
                         </h4>
                     </a>
-                    <a className="homeLink" href="https://goo.gl/maps/6tuzwygfyb8pg6fFA" target="_blank">
+                    <a className="homeLink" href="https://goo.gl/maps/6tuzwygfyb8pg6fFA"  rel="noreferrer" target="_blank">
                         <h4 className="homeMessage" style={{ display: "flex", justifyContent: "center" }}>
                             <Google style={{ marginRight: "10px" }} /><span className="linked">Google Maps</span>
                         </h4>

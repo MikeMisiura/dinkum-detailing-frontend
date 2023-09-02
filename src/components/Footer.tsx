@@ -93,12 +93,7 @@ function Footer() {
                             <a className='hidden-links px-1 nowrap' href='https://www.linkedin.com/in/mike-misiura/'>
                                 Mike Misiura
                             </a>
-                            and
-                            <a className='hidden-links px-1 nowrap' 
-                                // href='https://www.linkedin.com/in/mike-misiura/'
-                            >
-                                Matt Slater
-                            </a>
+                            and Matt Slater
                         </p>
                     </Col>
                 </Container>

@@ -2,7 +2,7 @@ import axios from "axios";
 // import UserContext from "./UserContext";
 import { IMessage } from "../@types/message";
 import MessageContext from "./MessageContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { backendUrl } from "../environmentVariableTypes";
 
 
@@ -10,17 +10,6 @@ export function MessageProvider({ children }: any) {
 
     const [message, setMessage] = useState([]);
     const baseUrl: string = backendUrl + "api/messages/"
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         await getAllMessages();
-    //     }
-    //     fetchData();
-    // }, []);
-
-    // function getAllMessages() {
-    //     return axios.get(baseUrl).then(response => setMessage(response.data));
-    // }
 
     function createMessage(message: IMessage) {
 
@@ -38,8 +27,7 @@ export function MessageProvider({ children }: any) {
 
     return (
         <MessageContext.Provider value={{
-            message,
-            // getAllMessages,
+            message, setMessage,
             createMessage
         }}>
             {children}

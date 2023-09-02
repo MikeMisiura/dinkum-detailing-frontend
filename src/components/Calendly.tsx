@@ -6,12 +6,12 @@ import { Button } from 'react-bootstrap';
 function Calendly() {
 
     const { 
-        email,
-        seats,
-        leather,
-        conditioner,
-        pets,
-        smoke
+        // seats,
+        // leather,
+        // conditioner,
+        // pets,
+        // smoke,
+        email
     } = useContext(EstimateContext)
 
     // const answer1:number = seats - 4

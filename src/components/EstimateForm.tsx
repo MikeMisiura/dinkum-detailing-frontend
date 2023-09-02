@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Modal, ModalDialog, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -29,6 +29,21 @@ function EstimateForm() {
     } = useContext(EstimateContext);
 
     const navigate = useNavigate();
+
+    // --------Pricing----------
+    useEffect(() => {
+        let newEstimatePrice = 125
+        if (seats > 5) { newEstimatePrice += (seats - 5) * 5 };
+        if (leather) {
+            newEstimatePrice += 10
+            if (conditioner) { newEstimatePrice += seats * 3 };
+        };
+        if (pets) { newEstimatePrice += 10 };
+        if (smoke) { newEstimatePrice += 10 };
+
+        setPrice(newEstimatePrice)
+    }, [seats, leather, conditioner, pets, smoke, setPrice])
+    // --------Pricing----------
 
     // reCAPTCHA
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
@@ -87,24 +102,6 @@ function EstimateForm() {
         );
     }
 
-    // --------Pricing----------
-    useEffect(() => {
-        let newEstimatePrice = 125
-        if (seats > 5) { newEstimatePrice += (seats - 5) * 5 };
-        if (leather) {
-            newEstimatePrice += 10
-            if (conditioner) { newEstimatePrice += seats * 3 };
-        };
-        if (pets) { newEstimatePrice += 10 };
-        if (smoke) { newEstimatePrice += 10 };
-
-        if (leather === false) {
-            setConditioner(false)
-        }
-
-        setPrice(newEstimatePrice)
-    }, [seats, leather, conditioner, pets, smoke])
-    // --------Pricing----------
 
     async function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
@@ -126,7 +123,7 @@ function EstimateForm() {
         createEstimate(newEstimate).then(() => {
             // reCAPTCHA
             localStorage.setItem('reCAPTCHAToken', '')
-            setValid(false)
+            // setValid(false)
         }).catch((error: any) => {
             console.log(error);
             if (error.response.status === 403) {
@@ -136,6 +133,8 @@ function EstimateForm() {
                 setNotValidEmail(false)
             }
         })
+
+        navigate("/schedule")
     }
 
     return (
@@ -279,19 +278,6 @@ function EstimateForm() {
                             />
                         )
                     }
-                    {
-                        (() => {
-                            if (valid === false && validateEmail(email) === true) {
-                                return (
-                                    <BotMessage
-                                        show={botModalShow}
-                                        onHide={() => setBotModalShow(false)}
-                                    />
-                                )
-                            }
-                        })()
-                    }
-
                 })()}
                 {(() => {
                     if (bot) {

@@ -1,18 +1,29 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Container, Modal } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import React, { useContext, useState, useRef } from 'react';
 import { IMessage } from '../@types/message';
 import MessageContext from '../contexts/MessageContext';
 import ReCAPTCHA from 'react-google-recaptcha';
 import "./ContactForm.css"
+import { ThreeDots } from 'react-loader-spinner'
+import { useNavigate } from 'react-router-dom';
+
 
 function ContactForm() {
 
     // hooks
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
-    const [message, setMessage] = useState<string>("");
+    // const [message, setMessage] = useState<string>("");
     const [bot, setBot] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const [modalShow, setModalShow] = React.useState(false);
+    const [botModalShow, setBotModalShow] = React.useState(false);
+
+    const [valid, setValid] = useState(true);
+    const [notValidEmail, setnotValidEmail] = useState(true);
+    const [notValidMessage, setnotValidMessage] = useState(true);
 
     // reCAPTCHA
     const reCAPTCHAKey: string = "6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI"
@@ -21,14 +32,9 @@ function ContactForm() {
     let companyPhoneNumber: string = "(320) 496-6010"
     let companyEmail: string = "dinkumdetailing@gmail.com"
 
-    let { createMessage } = useContext(MessageContext);
+    let { createMessage, message, setMessage } = useContext(MessageContext);
 
-    const [modalShow, setModalShow] = React.useState(false);
-    const [botModalShow, setBotModalShow] = React.useState(false);
-
-    const [valid, setValid] = useState(true);
-    const [notValidEmail, setnotValidEmail] = useState(true);
-    const [notValidMessage, setnotValidMessage] = useState(true);
+    const navigate = useNavigate();
 
     function validateEmail(email: string) {
         var re = /\S+@\S+\.\S+/;
@@ -44,17 +50,21 @@ function ContactForm() {
                 backdrop="static"
                 keyboard={false}
             >
-                <Modal.Header closeButton onClick={() => setValid(true)}>
+                <Modal.Header closeButton onClick={() => navigate("/")}>
                     <Modal.Title>
                         Message Sent!
                         <h6>Thanks for Contacting Us!</h6>
                     </Modal.Title>
                 </Modal.Header>
+                <Modal.Footer style={{ justifyContent: "center", display: "flex" }}>
+                    <Button onClick={() => navigate("/estimate")}>Get a FREE Estimate Now!</Button>
+                </Modal.Footer>
+
             </Modal>
         );
     }
 
-    function BotMessage (props: any) {
+    function BotMessage(props: any) {
         return (
             <Modal
                 {...props}
@@ -67,7 +77,7 @@ function ContactForm() {
                     <Modal.Title>
                         Message Failed!
                         <h6>
-                            reCAPTCHA thinks you are a bot. 
+                            reCAPTCHA thinks you are a bot.
                             If you are a human, please call or email us.
                         </h6>
                         <p>(320) 496-6010</p>
@@ -97,14 +107,17 @@ function ContactForm() {
             message
         }
 
+        setLoading(true)
+
         createMessage(newMessage).then(() => {
             // reCAPTCHA
-            // localStorage.setItem('reCAPTCHAToken', '')
+            localStorage.setItem('reCAPTCHAToken', '')
+            setLoading(false)
             setValid(false)
         }).catch((error: any) => {
             // console.log(error);
             // console.log(error.response.status);
-            
+
             if (error.response.status === 403) {
                 setBot(true)
                 console.log('we think you are a bot. If you are a human, please call or email us.');
@@ -189,8 +202,20 @@ function ContactForm() {
                     </div>
                 </div>
             </Form>
+            <Container className='center-content'>
+            <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color="#3888CB"
+                ariaLabel="three-dots-loading"
+                // wrapperStyle={{}}
+                // wrapperClassName=""
+                visible={loading}
+            />
+            </Container>
             <div>
-            {(() => {
+                {(() => {
                     if (valid === false && validateEmail(email) === true) {
                         return (
                             <MessageSent

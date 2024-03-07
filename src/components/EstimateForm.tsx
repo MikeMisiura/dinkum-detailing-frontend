@@ -39,7 +39,7 @@ function EstimateForm() {
 
 	// --------Pricing----------
 	useEffect(() => {
-		let newEstimatePrice = 175
+		let newEstimatePrice = 150
 		if (seats > 5) {
 			newEstimatePrice += (seats - 5) * 5
 		}
@@ -73,9 +73,9 @@ function EstimateForm() {
 		return (
 			<Modal
 				{...props}
-				size="md"
+				size='md'
 				centered
-				backdrop="static"
+				backdrop='static'
 				keyboard={false}
 			>
 				<Modal.Header
@@ -102,9 +102,9 @@ function EstimateForm() {
 		return (
 			<Modal
 				{...props}
-				size="md"
+				size='md'
 				centered
-				backdrop="static"
+				backdrop='static'
 				keyboard={false}
 			>
 				<Modal.Header
@@ -176,19 +176,19 @@ function EstimateForm() {
 			<Container>
 				<Row>
 					<Col
-						sm="12"
-						md="7"
-						xl="8"
+						sm='12'
+						md='7'
+						xl='8'
 					>
-						<Card className="cardEstimate">
-							<h1 className="FormTitle">ESTIMATE</h1>
+						<Card className='cardEstimate'>
+							<h1 className='FormTitle'>ESTIMATE</h1>
 							<Form.Label>Number of Seats</Form.Label>
 							<Form.Range
-								name="seats"
+								name='seats'
 								value={seats}
 								onChange={(e) => setSeats(parseInt(e.target.value))}
-								min="5"
-								max="12"
+								min='5'
+								max='12'
 							/>
 							<Form.Label>
 								{seats}
@@ -197,40 +197,40 @@ function EstimateForm() {
 							</Form.Label>
 
 							<Form.Check
-								type="switch"
-								label="Does you vehicle have Leather Seats?"
-								name="leather"
+								type='switch'
+								label='Does you vehicle have Leather Seats?'
+								name='leather'
 								checked={leather}
 								onChange={(e) => setLeather(e.target.checked)}
-								as="input"
+								as='input'
 							/>
 
 							<Form.Check
 								disabled={!leather}
-								type="switch"
-								label="Do you want your Leather Seats Conditioned?"
-								name="conditioner"
+								type='switch'
+								label='Do you want your Leather Seats Conditioned?'
+								name='conditioner'
 								checked={conditioner}
 								onChange={(e) => setConditioner(e.target.checked)}
-								as="input"
+								as='input'
 							/>
 
 							<Form.Check
-								type="switch"
-								label="Are pets regularly in the vehicle?"
-								name="pets"
+								type='switch'
+								label='Are pets regularly in the vehicle?'
+								name='pets'
 								checked={pets}
 								onChange={(e) => setPets(e.target.checked)}
-								as="input"
+								as='input'
 							/>
 
 							<Form.Check
-								type="switch"
-								label="Do you smoke in the vehicle?"
-								name="smoke"
+								type='switch'
+								label='Do you smoke in the vehicle?'
+								name='smoke'
 								checked={smoke}
 								onChange={(e) => setSmoke(e.target.checked)}
-								as="input"
+								as='input'
 							/>
 							{smoke && (
 								<p>
@@ -242,18 +242,18 @@ function EstimateForm() {
 					</Col>
 
 					<Col
-						sm="12"
-						md="5"
-						xl="4"
+						sm='12'
+						md='5'
+						xl='4'
 					>
-						<Card className="formEstimate">
-							<div className="heading1">
+						<Card className='formEstimate'>
+							<div className='heading1'>
 								<strong>
 									<h4>TOTAL ESTIMATE: ${price}</h4>
 								</strong>
 							</div>
 							<div
-								className="cardAndExpire"
+								className='cardAndExpire'
 								style={{ marginTop: '1px' }}
 							>
 								<p>
@@ -262,75 +262,75 @@ function EstimateForm() {
 									{seats === 12 && ' or more'}
 								</p>
 							</div>
-							<div className="cardAndExpire">
+							<div className='cardAndExpire'>
 								{leather && (
 									<p>
 										Leather{' '}
 										<Check2
-											color="green"
+											color='green'
 											size={18}
 										/>
 									</p>
 								)}
 							</div>
-							<div className="cardAndExpire">
+							<div className='cardAndExpire'>
 								{' '}
 								{conditioner && leather && (
 									<p>
 										Conditioned{' '}
 										<Check2
-											color="green"
+											color='green'
 											size={18}
 										/>
 									</p>
 								)}
 							</div>
-							<div className="cardAndExpire">
+							<div className='cardAndExpire'>
 								{pets && (
 									<p>
 										Pets{' '}
 										<Check2
-											color="green"
+											color='green'
 											size={18}
 										/>
 									</p>
 								)}
 							</div>
 							<div
-								className="cardAndExpire"
+								className='cardAndExpire'
 								style={{ marginBottom: '-30px' }}
 							>
 								{smoke === true && (
 									<p>
 										Smoke{' '}
 										<Check2
-											color="green"
+											color='green'
 											size={18}
 										/>
 									</p>
 								)}
 							</div>
 
-							<div className="emailEstimate">
-								<p className="bodyEstimate">
+							<div className='emailEstimate'>
+								<p className='bodyEstimate'>
 									<strong>LOCK IN YOUR ESTIMATE</strong>
 								</p>
-								<Form className="review">
+								<Form className='review'>
 									<Form.Label>
 										Enter your Email to lock in your estimate for 90 days and
 										book your appointment.
 									</Form.Label>
 									<Form.Control
-										placeholder="Enter email"
-										type="text"
-										name="email"
+										placeholder='Enter email'
+										type='text'
+										name='email'
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
 									/>
 									{(() => {
 										if (notValidEmail === false) {
 											return (
-												<Form.Label className="requiredEstimate">
+												<Form.Label className='requiredEstimate'>
 													Please Enter a Valid Message
 												</Form.Label>
 											)
@@ -341,21 +341,21 @@ function EstimateForm() {
 								<br />
 							</div>
 							<Link
-								className="purchaseLink"
+								className='purchaseLink'
 								onClick={handleSubmit}
 								style={{ textDecoration: 'none' }}
 								to={''}
 							>
-								<div className="cardFooter text-center">BOOK A DATE</div>
+								<div className='cardFooter text-center'>BOOK A DATE</div>
 							</Link>
 						</Card>
 					</Col>
-					<div className="captchaStyle">
+					<div className='captchaStyle'>
 						<ReCAPTCHA
 							sitekey={reCAPTCHAKey}
-							size="invisible"
+							size='invisible'
 							ref={recaptchaRef}
-							className="grecaptcha-badge"
+							className='grecaptcha-badge'
 						/>
 					</div>
 				</Row>

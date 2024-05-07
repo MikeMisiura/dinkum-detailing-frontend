@@ -98,77 +98,77 @@ function EstimateForm() {
 		)
 	}
 
-	function BotMessage(props: any) {
-		return (
-			<Modal
-				{...props}
-				size='md'
-				centered
-				backdrop='static'
-				keyboard={false}
-			>
-				<Modal.Header
-					closeButton
-					onClick={() => setBot(false)}
-				>
-					<Modal.Title>
-						Message Failed!
-						<h6>
-							reCAPTCHA thinks you are a bot. If you are a human, please call or
-							email us.
-						</h6>
-						<p>(320) 496-6010</p>
-						<p>dinkumdetailing@gmail.com</p>
-						<p>We apologize for the inconvenience.</p>
-					</Modal.Title>
-				</Modal.Header>
-			</Modal>
-		)
-	}
+	// function BotMessage(props: any) {
+	// 	return (
+	// 		<Modal
+	// 			{...props}
+	// 			size='md'
+	// 			centered
+	// 			backdrop='static'
+	// 			keyboard={false}
+	// 		>
+	// 			<Modal.Header
+	// 				closeButton
+	// 				onClick={() => setBot(false)}
+	// 			>
+	// 				<Modal.Title>
+	// 					Message Failed!
+	// 					<h6>
+	// 						reCAPTCHA thinks you are a bot. If you are a human, please call or
+	// 						email us.
+	// 					</h6>
+	// 					<p>(320) 496-6010</p>
+	// 					<p>dinkumdetailing@gmail.com</p>
+	// 					<p>We apologize for the inconvenience.</p>
+	// 				</Modal.Title>
+	// 			</Modal.Header>
+	// 		</Modal>
+	// 	)
+	// }
 
 	async function handleSubmit(event: { preventDefault: () => void }) {
 		event.preventDefault()
 
-		// reCAPTCHA
-		let reCaptchaToken = await recaptchaRef.current?.executeAsync()
-		recaptchaRef.current?.reset()
-		if (!reCaptchaToken) {
-			reCaptchaToken = 'no token'
-		}
-		localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
+		// // reCAPTCHA
+		// let reCaptchaToken = await recaptchaRef.current?.executeAsync()
+		// recaptchaRef.current?.reset()
+		// if (!reCaptchaToken) {
+		// 	reCaptchaToken = 'no token'
+		// }
+		// localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
 
-		setModalShow(true)
-		setNotValidEmail(true)
+		// setModalShow(true)
+		// setNotValidEmail(true)
 
-		let newEstimate: IEstimate = {
-			email,
-			seats,
-			leather,
-			conditioner,
-			price,
-			pets,
-			smoke,
-		}
+		// let newEstimate: IEstimate = {
+		// 	email,
+		// 	seats,
+		// 	leather,
+		// 	conditioner,
+		// 	price,
+		// 	pets,
+		// 	smoke,
+		// }
 
-		createEstimate(newEstimate)
-			.then(() => {
-				// reCAPTCHA
-				localStorage.setItem('reCAPTCHAToken', '')
-				// setValid(false)
-			})
-			.catch((error: any) => {
-				console.log(error)
-				if (error.response.status === 403) {
-					setBot(true)
-					console.log(
-						'we think you are a bot. If you are a human, please call or email us.'
-					)
-				} else if (email === '' || validateEmail(email) === false) {
-					setNotValidEmail(false)
-				}
-			})
+		// createEstimate(newEstimate)
+		// 	.then(() => {
+		// 		// reCAPTCHA
+		// 		localStorage.setItem('reCAPTCHAToken', '')
+		// 		// setValid(false)
+		// 	})
+		// 	.catch((error: any) => {
+		// 		console.log(error)
+		// 		if (error.response.status === 403) {
+		// 			setBot(true)
+		// 			console.log(
+		// 				'we think you are a bot. If you are a human, please call or email us.'
+		// 			)
+		// 		} else if (email === '' || validateEmail(email) === false) {
+		// 			setNotValidEmail(false)
+		// 		}
+		// 	})
 
-		navigate('/schedule')
+		navigate('/contact-us')
 	}
 
 	return (
@@ -311,11 +311,11 @@ function EstimateForm() {
 								)}
 							</div>
 
-							<div className='emailEstimate'>
-								<p className='bodyEstimate'>
+							{/* <div className='emailEstimate'> */}
+							{/* <p className='bodyEstimate'>
 									<strong>LOCK IN YOUR ESTIMATE</strong>
-								</p>
-								<Form className='review'>
+								</p> */}
+							{/* <Form className='review'>
 									<Form.Label>
 										Enter your Email to lock in your estimate for 90 days and
 										book your appointment.
@@ -336,10 +336,10 @@ function EstimateForm() {
 											)
 										}
 									})()}
-								</Form>
+								</Form> */}
 
-								<br />
-							</div>
+							<br />
+							{/* </div> */}
 							<Link
 								className='purchaseLink'
 								onClick={handleSubmit}
@@ -350,16 +350,16 @@ function EstimateForm() {
 							</Link>
 						</Card>
 					</Col>
-					<div className='captchaStyle'>
+					{/* <div className='captchaStyle'>
 						<ReCAPTCHA
 							sitekey={reCAPTCHAKey}
 							size='invisible'
 							ref={recaptchaRef}
 							className='grecaptcha-badge'
 						/>
-					</div>
+					</div> */}
 				</Row>
-				{(() => {
+				{/* {(() => {
 					if (valid === false && validateEmail(email) === true) {
 						return (
 							<MessageSent
@@ -380,7 +380,7 @@ function EstimateForm() {
 							/>
 						)
 					}
-				})()}
+				})()} */}
 			</Container>
 		</div>
 	)

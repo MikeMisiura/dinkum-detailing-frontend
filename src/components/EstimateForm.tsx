@@ -14,13 +14,18 @@ function EstimateForm() {
 	const [modalShow, setModalShow] = React.useState(false)
 	const [valid, setValid] = useState(true)
 	const [notValidEmail, setNotValidEmail] = useState(true)
-	const [bot, setBot] = useState<boolean>(false)
-	const [botModalShow, setBotModalShow] = React.useState(false)
+	const [notValidPhone, setNotValidPhone] = useState(true)
+	// const [bot, setBot] = useState<boolean>(false)
+	// const [botModalShow, setBotModalShow] = React.useState(false)
 
 	let {
 		createEstimate,
 		email,
 		setEmail,
+		name,
+		setName,
+		phone,
+		setPhone,
 		seats,
 		setSeats,
 		leather,
@@ -61,12 +66,19 @@ function EstimateForm() {
 	// --------Pricing----------
 
 	// reCAPTCHA
-	const reCAPTCHAKey: string = '6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI'
-	const recaptchaRef = useRef<ReCAPTCHA>(null)
+	// const reCAPTCHAKey: string = '6LdVAGUnAAAAAAOejCq1K_ei5Gof8dIWtuA0foKI'
+	// const recaptchaRef = useRef<ReCAPTCHA>(null)
 
 	function validateEmail(email: string) {
-		var re = /\S+@\S+\.\S+/
-		return re.test(email)
+		// var re = /\S+@\S+\.\S+/
+		// return re.test(email)
+
+		return true
+	}
+
+	function validatePhone(phone: string) {
+		var re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+		return re.test(phone)
 	}
 
 	function MessageSent(props: any) {
@@ -84,15 +96,25 @@ function EstimateForm() {
 						display: 'flex',
 						textAlign: 'center',
 					}}
-					onClick={() => setValid(true)}
+					onClick={() => {
+						setValid(true)
+						navigate('/contact-us')
+					}}
 				>
 					<Modal.Title>
-						Your Estimate has been Locked In!
-						<h6>Check your email for more info!</h6>
+						We will reach out to you soon!
+						<h6>We have received your information.</h6>
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Footer style={{ justifyContent: 'center', display: 'flex' }}>
-					<Button onClick={() => navigate('/schedule')}>Schedule!</Button>
+					<Button
+						onClick={() => {
+							setValid(true)
+							navigate('/contact-us')
+						}}
+					>
+						Looking forward to it!
+					</Button>
 				</Modal.Footer>
 			</Modal>
 		)
@@ -137,38 +159,53 @@ function EstimateForm() {
 		// }
 		// localStorage.setItem('reCAPTCHAToken', reCaptchaToken)
 
-		// setModalShow(true)
-		// setNotValidEmail(true)
+		setModalShow(true)
+		setNotValidEmail(validateEmail(email))
+		setNotValidPhone(validatePhone(phone))
 
-		// let newEstimate: IEstimate = {
-		// 	email,
-		// 	seats,
-		// 	leather,
-		// 	conditioner,
-		// 	price,
-		// 	pets,
-		// 	smoke,
-		// }
+		if (!notValidEmail || !notValidPhone) {
+			console.log(`Email: ${notValidEmail}; Phone: ${notValidPhone}`)
+			return
+		}
 
-		// createEstimate(newEstimate)
-		// 	.then(() => {
-		// 		// reCAPTCHA
-		// 		localStorage.setItem('reCAPTCHAToken', '')
-		// 		// setValid(false)
-		// 	})
-		// 	.catch((error: any) => {
-		// 		console.log(error)
-		// 		if (error.response.status === 403) {
-		// 			setBot(true)
-		// 			console.log(
-		// 				'we think you are a bot. If you are a human, please call or email us.'
-		// 			)
-		// 		} else if (email === '' || validateEmail(email) === false) {
-		// 			setNotValidEmail(false)
-		// 		}
-		// 	})
+		// console.log('good')
 
-		navigate('/contact-us')
+		let newEstimate: IEstimate = {
+			email,
+			name,
+			phone,
+			seats,
+			leather,
+			conditioner,
+			price,
+			pets,
+			smoke,
+		}
+
+		console.log(newEstimate)
+
+		createEstimate(newEstimate)
+			.then(() => {
+				console.log('then-ing')
+				// reCAPTCHA
+				// localStorage.setItem('reCAPTCHAToken', '')
+				setValid(false)
+			})
+			.catch((error: any) => {
+				console.log('catch-ing')
+
+				console.log(error)
+				// if (error.response.status === 403) {
+				// 	setBot(true)
+				// 	console.log(
+				// 		'we think you are a bot. If you are a human, please call or email us.'
+				// 	)
+				// } else if (email === '' || validateEmail(email) === false) {
+				// 	setNotValidEmail(false)
+				// }
+			})
+
+		// navigate('/contact-us')
 	}
 
 	return (
@@ -311,42 +348,61 @@ function EstimateForm() {
 								)}
 							</div>
 
-							{/* <div className='emailEstimate'> */}
-							{/* <p className='bodyEstimate'>
+							<div className='emailEstimate'>
+								<p className='bodyEstimate'>
 									<strong>LOCK IN YOUR ESTIMATE</strong>
-								</p> */}
-							{/* <Form className='review'>
-									<Form.Label>
-										Enter your Email to lock in your estimate for 90 days and
-										book your appointment.
-									</Form.Label>
+								</p>
+								<Form className='review'>
+									<Form.Label>Name</Form.Label>
 									<Form.Control
-										placeholder='Enter email'
+										placeholder='Name'
+										type='text'
+										name='name'
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+									/>
+									<Form.Label>Phone Number</Form.Label>
+									<Form.Control
+										placeholder='Phone Number'
+										type='text'
+										name='phone'
+										value={phone}
+										onChange={(e) => setPhone(e.target.value)}
+									/>
+									<Form.Label>Email (optional)</Form.Label>
+									<Form.Control
+										placeholder='Email'
 										type='text'
 										name='email'
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
 									/>
 									{(() => {
-										if (notValidEmail === false) {
+										if (!notValidEmail) {
 											return (
 												<Form.Label className='requiredEstimate'>
-													Please Enter a Valid Message
+													Please Enter a Valid Email
+												</Form.Label>
+											)
+										} else if (!notValidPhone) {
+											return (
+												<Form.Label className='requiredEstimate'>
+													Please Enter a Valid Phone Number
 												</Form.Label>
 											)
 										}
 									})()}
-								</Form> */}
+								</Form>
 
-							<br />
-							{/* </div> */}
+								<br />
+							</div>
 							<Link
 								className='purchaseLink'
 								onClick={handleSubmit}
 								style={{ textDecoration: 'none' }}
 								to={''}
 							>
-								<div className='cardFooter text-center'>BOOK A DATE</div>
+								<div className='cardFooter text-center'>GET A CALL</div>
 							</Link>
 						</Card>
 					</Col>
@@ -359,19 +415,20 @@ function EstimateForm() {
 						/>
 					</div> */}
 				</Row>
-				{/* {(() => {
-					if (valid === false && validateEmail(email) === true) {
+				{(() => {
+					if (!valid && validateEmail(email)) {
 						return (
 							<MessageSent
 								show={modalShow}
 								onHide={() => {
 									setModalShow(false)
+									navigate('/contact-us')
 								}}
 							/>
 						)
 					}
 				})()}
-				{(() => {
+				{/* {(() => {
 					if (bot) {
 						return (
 							<BotMessage
